@@ -1,0 +1,20 @@
+[package]
+name = "wolf_engine_sdl2"
+description = "SDL2 integration for Wolf Engine."
+version = "0.1.0"
+authors = ["AlexiWolf <alexiwolf@pm.me>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/AlexiWolf/wolf_engine_sdl2"
+homepage = "https://github.com/AlexiWolf/wolf_engine_sdl2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4"
+wolf_engine = "0.15"
+sdl2 = {version = "0.35", features = ["image"]}
+
+[dev-dependencies]
+mockall = "0.11"
+
