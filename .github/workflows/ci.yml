@@ -37,10 +37,6 @@ jobs:
       run : |
         brew install SDL2
         brew install sdl2_image
-    - name: abc_install_dependencies
-      uses: lyricwulf/abc@1.2.0
-      with:
-        windows: sdl2 sdl2_image 
     - name: Setup Rust
       uses: ATiltedTree/setup-rust@v1
       with:
