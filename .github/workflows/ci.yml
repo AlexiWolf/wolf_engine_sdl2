@@ -37,6 +37,10 @@ jobs:
       run : |
         brew install SDL2
         brew install sdl2_image
+    - name: install_dependencies_windows
+      if: matrix.platform.os == 'windows-latest'
+      run: |
+        vcpkg install sdl2 sdl2-image
     - name: Setup Rust
       uses: ATiltedTree/setup-rust@v1
       with:
