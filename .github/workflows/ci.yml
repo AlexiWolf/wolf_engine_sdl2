@@ -36,6 +36,7 @@ jobs:
       if : ${{ matrix.platform.os == 'macos-latest' }}
       run : |
         brew install SDL2
+        brew install sdl2_image
     - name: Setup Rust
       uses: ATiltedTree/setup-rust@v1
       with:
