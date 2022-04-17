@@ -11,7 +11,9 @@ impl SdlPlugin {
 
 impl Plugin for SdlPlugin {
     fn setup(&mut self, engine_builder: EngineBuilder) -> PluginResult {
-        Ok(engine_builder.with_subcontext(SdlContext))
+        Ok(engine_builder
+            .with_subcontext(SdlContext)
+            .with_subcontext(SdlVideoContext))
     }
 }
 
