@@ -25,5 +25,8 @@ mod sdl2_plugin_tests {
         let sdl_plugin = SdlPlugin::new();
 
         engine_builder = engine_builder.with_plugin(Box::from(sdl_plugin)); 
+        let engine = engine_builder.build();
+
+        assert!(engine.context.borrow::<SdlContext>().is_some());
     }
 }
