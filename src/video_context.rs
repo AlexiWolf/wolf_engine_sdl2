@@ -23,10 +23,18 @@ impl Subcontext for SdlVideoContext {}
 /// assert_eq!(window_settings.width, 800);
 /// assert_eq!(window_settings.height, 600);
 /// ```
-pub struct SdlWindowSettings;
+pub struct SdlWindowSettings {
+    pub title: &'static str,
+    pub width: u32,
+    pub height: u32,
+}
 
 impl SdlWindowSettings {
-    pub fn new(title: &str, width: u32, height: u32) -> Self {
-        Self 
+    pub fn new(title: &'static str, width: u32, height: u32) -> Self {
+        Self {
+            title,
+            width,
+            height,
+        }
     }
 }
