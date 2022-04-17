@@ -9,3 +9,11 @@ impl SdlVideoContext {
 }
 
 impl Subcontext for SdlVideoContext {}
+
+pub struct WindowSettings;
+
+impl WindowSettings {
+    pub fn new(title: &str, width: u32, height: u32) -> Self {
+        Self 
+    }
+}
