@@ -19,6 +19,10 @@ pub struct SdlContext;
 
 impl Subcontext for SdlContext {}
 
+pub struct SdlVideoContext;
+
+impl Subcontext for SdlVideoContext {}
+
 #[cfg(test)]
 mod sdl2_plugin_tests {
     use super::*;
