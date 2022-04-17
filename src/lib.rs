@@ -1,4 +1,5 @@
 pub use sdl2;
+use wolf_engine::*;
 
 pub struct SdlPlugin;
 
@@ -8,10 +9,15 @@ impl SdlPlugin {
     }
 }
 
+impl Plugin for SdlPlugin {
+    fn setup(&mut self, engine_builder: EngineBuilder) -> PluginResult {
+        Ok(engine_builder)
+    }
+}
+
 #[cfg(test)]
 mod sdl2_plugin_tests {
     use super::*;
-    use wolf_engine::*;
 
     #[test]
     fn should_have_sdl_plugin() {
