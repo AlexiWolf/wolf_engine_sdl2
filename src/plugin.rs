@@ -2,11 +2,11 @@ use crate::*;
 use wolf_engine::*;
 
 pub struct SdlPlugin {
-    window_settings: WindowSettings,
+    window_settings: SdlWindowSettings,
 }
 
 impl SdlPlugin {
-    pub fn new(window_settings: WindowSettings) -> Self {
+    pub fn new(window_settings: SdlWindowSettings) -> Self {
         Self {
             window_settings
         }
@@ -28,7 +28,7 @@ mod sdl2_plugin_tests {
     #[test]
     fn should_have_sdl_plugin() {
         let mut engine_builder = EngineBuilder::new();
-        let window_settings = WindowSettings::new("Test", 800, 600);
+        let window_settings = SdlWindowSettings::new("Test", 800, 600);
         let sdl_plugin = SdlPlugin::new(window_settings);
 
         engine_builder = engine_builder.with_plugin(Box::from(sdl_plugin));
