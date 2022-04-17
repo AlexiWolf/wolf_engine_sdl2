@@ -11,6 +11,18 @@ impl SdlVideoContext {
 impl Subcontext for SdlVideoContext {}
 
 /// Settings for creating the SDL window.
+///
+/// # Examples
+///
+/// ```
+/// use wolf_engine_sdl2::*;
+///
+/// let window_settings = SdlWindowSettings::new("Hello, world!", 800, 600);
+///
+/// assert_eq!(window_settings.title, "Hello, world!");
+/// assert_eq!(window_settings.width, 800);
+/// assert_eq!(window_settings.height, 600);
+/// ```
 pub struct SdlWindowSettings;
 
 impl SdlWindowSettings {
