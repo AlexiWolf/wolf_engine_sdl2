@@ -16,7 +16,6 @@ jobs:
           - stable 
         platform:
           - { os: ubuntu-latest }
-          - { os: windows-latest }
           - { os: macos-latest }
     env:
       RUST_BACKTRACE: 1
