@@ -10,6 +10,7 @@ impl SdlVideoContext {
 
 impl Subcontext for SdlVideoContext {}
 
+/// Settings for creating the SDL window.
 pub struct WindowSettings;
 
 impl WindowSettings {
