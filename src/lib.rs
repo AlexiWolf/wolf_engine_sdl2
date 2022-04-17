@@ -32,5 +32,6 @@ mod sdl2_plugin_tests {
         let engine = engine_builder.build();
 
         assert!(engine.context.borrow::<SdlContext>().is_some());
+        assert!(engine.context.borrow::<SdlVideoContext>().is_some());
     }
 }
