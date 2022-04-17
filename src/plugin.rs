@@ -1,11 +1,15 @@
 use crate::*;
 use wolf_engine::*;
 
-pub struct SdlPlugin;
+pub struct SdlPlugin {
+    window_settings: WindowSettings,
+}
 
 impl SdlPlugin {
-    pub fn new() -> Self {
-        Self
+    pub fn new(window_settings: WindowSettings) -> Self {
+        Self {
+            window_settings
+        }
     }
 }
 
