@@ -15,6 +15,10 @@ impl Plugin for SdlPlugin {
     }
 }
 
+pub struct SdlContext;
+
+impl Subcontext for SdlContext {}
+
 #[cfg(test)]
 mod sdl2_plugin_tests {
     use super::*;
