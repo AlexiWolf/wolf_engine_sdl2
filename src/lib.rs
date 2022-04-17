@@ -1,6 +1,12 @@
 pub use sdl2;
 
-pub 
+pub struct SdlPlugin;
+
+impl SdlPlugin {
+    pub fn new() -> Self {
+        Self
+    }
+}
 
 #[cfg(test)]
 mod sdl2_plugin_tests {
