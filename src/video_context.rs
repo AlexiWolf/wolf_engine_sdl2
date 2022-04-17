@@ -11,9 +11,9 @@ impl SdlVideoContext {
 impl Subcontext for SdlVideoContext {}
 
 /// Settings for creating the SDL window.
-pub struct WindowSettings;
+pub struct SdlWindowSettings;
 
-impl WindowSettings {
+impl SdlWindowSettings {
     pub fn new(title: &str, width: u32, height: u32) -> Self {
         Self 
     }
