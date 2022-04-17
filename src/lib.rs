@@ -15,7 +15,9 @@ mod sdl2_plugin_tests {
 
     #[test]
     fn should_have_sdl_plugin() {
-        let engine_builder = EngineBuilder::new();
+        let mut engine_builder = EngineBuilder::new();
         let sdl_plugin = SdlPlugin::new();
+
+        engine_builder = engine_builder.with_plugin(Box::from(sdl_plugin)); 
     }
 }
