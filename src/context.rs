@@ -1,10 +1,16 @@
 use wolf_engine::*;
+use sdl2::Sdl;
 
-pub struct SdlContext;
+pub struct SdlContext {
+    pub sdl: Sdl,
+}
 
 impl SdlContext {
     pub fn new() -> Self {
-        Self
+        let sdl = sdl2::init().expect("Failed to initialize SDL");
+        Self {
+            sdl,
+        }
     }
 }
 
