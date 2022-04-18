@@ -46,3 +46,13 @@ impl SdlWindowSettings {
         }
     }
 }
+
+impl Default for SdlWindowSettings {
+    fn default() -> Self {
+        Self { 
+            title: "Wolf Engine - Game", 
+            width: 800, 
+            height: 600 
+        }
+    }
+}
