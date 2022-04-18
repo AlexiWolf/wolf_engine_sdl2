@@ -5,7 +5,7 @@ use wolf_engine::*;
 /// # Examples
 ///
 /// ```
-/// # use wolf_engine_sdl2::SdlVideoContext;
+/// # use wolf_engine_sdl2::*;
 /// # let sdl_video_context = SdlVideoContext::new(SdlWindowSettings::default());
 /// ```
 pub struct SdlVideoContext;
