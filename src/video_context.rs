@@ -1,5 +1,6 @@
 use wolf_engine::*;
 
+/// Provides access to SDL's [Window Canvas](Canvas) and [VideoSubsystem]. 
 pub struct SdlVideoContext;
 
 impl SdlVideoContext {
