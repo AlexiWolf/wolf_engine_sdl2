@@ -1,6 +1,13 @@
 use wolf_engine::*;
 
 /// Provides access to SDL's [Window Canvas](Canvas) and [VideoSubsystem]. 
+///
+/// # Examples
+///
+/// ```
+/// # use wolf_engine_sdl2::SdlVideoContext;
+/// # let sdl_video_context = SdlVideoContext::new(SdlWindowSettings::default());
+/// ```
 pub struct SdlVideoContext;
 
 impl SdlVideoContext {
