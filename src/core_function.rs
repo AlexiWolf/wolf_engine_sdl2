@@ -24,6 +24,7 @@ pub fn run_with_sdl(mut engine: Engine) {
             .scheduler
             .render(&mut engine.context, &mut engine.state_stack);
         if has_window_quit {
+            log::debug!("The SDL window has quit.  Clearing the state stack.");
             engine.state_stack.clear(&mut engine.context); 
         }
     }
