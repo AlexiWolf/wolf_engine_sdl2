@@ -21,9 +21,26 @@ pub struct SdlVideoContext {
 
 impl SdlVideoContext {
     pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
+        let video = sdl
+            .video()
+            .expect("Failed to crate the video subsystem");
+        let window = video
+            .window(
+                window_settings.title,
+                window_settings.width,
+                window_settings.height,
+            )
+            .position_centered()
+            .build()
+            .expect("Failed to create the window");
+        let canvas = window
+            .into_canvas()
+            .present_vsync()
+            .build()
+            .expect("Failed to create the window canvas");
         Self {
-            video: todo!(),
-            canvas: todo!(),
+            video,
+            canvas,
         }
     }
 }
