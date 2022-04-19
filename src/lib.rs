@@ -33,9 +33,11 @@
 //! ```
 
 mod context;
+mod core_function;
 mod plugin;
 mod video_context;
 pub use context::*;
+pub use core_function::*;
 pub use plugin::*;
 pub use video_context::*;
 
