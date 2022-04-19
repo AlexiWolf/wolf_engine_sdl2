@@ -1,3 +1,4 @@
+use sdl2::{VideoSubsystem, render::WindowCanvas};
 use wolf_engine::*;
 
 /// Provides access to SDL's [Window Canvas](Canvas) and [VideoSubsystem]. 
@@ -24,6 +25,22 @@ pub struct SdlVideoContext;
 impl SdlVideoContext {
     pub fn new(window_settings: SdlWindowSettings) -> Self {
         Self
+    }
+
+    pub fn video() -> &'static VideoSubsystem {
+        todo!() 
+    }
+
+    pub fn video_mut() -> &'static mut VideoSubsystem {
+        todo!() 
+    }
+
+    pub fn canvas() -> &'static WindowCanvas {
+        todo!()
+    }
+
+    pub fn canvas_mut() -> &'static mut WindowCanvas {
+        todo!()
     }
 }
 
