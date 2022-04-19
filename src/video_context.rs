@@ -22,11 +22,17 @@ use wolf_engine::*;
 /// ```
 ///
 /// From there, you can use SDL as you would normally.
-pub struct SdlVideoContext;
+pub struct SdlVideoContext {
+    video: VideoSubsystem,
+    canvas: WindowCanvas,
+}
 
 impl SdlVideoContext {
     pub fn new(window_settings: SdlWindowSettings) -> Self {
-        Self
+        Self {
+            video: todo!(),
+            canvas: todo!(),
+        }
     }
 
     pub fn video() -> &'static VideoSubsystem {
