@@ -28,7 +28,7 @@ mod sdl2_plugin_tests {
     use super::*;
 
     #[test]
-    fn should_have_sdl_plugin() {
+    fn should_load_expected_contexts() {
         let mut engine_builder = EngineBuilder::new();
         let window_settings = SdlWindowSettings::new("Test", 800, 600);
         let sdl_plugin = SdlPlugin::new(window_settings);
