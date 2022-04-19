@@ -28,7 +28,7 @@ mod sdl2_plugin_tests {
     #[test]
     fn should_load_expected_contexts() {
         let mut engine_builder = EngineBuilder::new();
-        let window_settings = SdlWindowSettings::new("Test", 800, 600);
+        let window_settings = SdlWindowSettings::default();
         let sdl_plugin = SdlPlugin::new(window_settings);
 
         engine_builder = engine_builder.with_plugin(Box::from(sdl_plugin));
