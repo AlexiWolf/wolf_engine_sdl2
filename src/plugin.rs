@@ -1,6 +1,7 @@
 use crate::*;
 use wolf_engine::*;
 
+/// Provides [sdl2] integrations for [wolf_engine].
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
 }
