@@ -1,7 +1,7 @@
+use sdl2::{pixels::Color, render::WindowCanvas, Sdl, VideoSubsystem};
 use wolf_engine::*;
-use sdl2::{Sdl, VideoSubsystem, render::WindowCanvas, pixels::Color};
 
-/// Provides access to [sdl2]'s [WindowCanvas] and [VideoSubsystem]. 
+/// Provides access to [sdl2]'s [WindowCanvas] and [VideoSubsystem].
 ///
 /// # Examples
 ///
@@ -21,9 +21,7 @@ pub struct SdlVideoContext {
 
 impl SdlVideoContext {
     pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
-        let video = sdl
-            .video()
-            .expect("Failed to crate the video subsystem");
+        let video = sdl.video().expect("Failed to crate the video subsystem");
         let window = video
             .window(
                 window_settings.title,
@@ -40,10 +38,7 @@ impl SdlVideoContext {
             .expect("Failed to create the window canvas");
         canvas.set_draw_color(Color::BLACK);
         canvas.present();
-        Self {
-            video,
-            canvas,
-        }
+        Self { video, canvas }
     }
 }
 
@@ -81,10 +76,10 @@ impl SdlWindowSettings {
 
 impl Default for SdlWindowSettings {
     fn default() -> Self {
-        Self { 
-            title: "Wolf Engine - Game", 
-            width: 800, 
-            height: 600 
+        Self {
+            title: "Wolf Engine - Game",
+            width: 800,
+            height: 600,
         }
     }
 }
