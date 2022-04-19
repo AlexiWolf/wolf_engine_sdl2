@@ -24,7 +24,7 @@ pub fn run_with_sdl(mut engine: Engine) {
             .scheduler
             .render(&mut engine.context, &mut engine.state_stack);
         if should_quit {
-            engine.state_stack.clear(&mut context); 
+            engine.state_stack.clear(&mut engine.context); 
         }
     }
 }
