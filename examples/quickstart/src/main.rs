@@ -1,8 +1,8 @@
+use colors_transform::{Color, Hsl};
 use log::*;
+use sdl2::pixels::Color as SdlColor;
 use wolf_engine::*;
 use wolf_engine_sdl2::*;
-use colors_transform::{Hsl, Color};
-use sdl2::pixels::Color as SdlColor;
 
 pub fn main() {
     logging::initialize_logging(LevelFilter::Debug);
@@ -23,16 +23,14 @@ pub struct ExampleGame {
 
 impl ExampleGame {
     pub fn new() -> Self {
-        Self {
-            hew: 0.0,
-        }
+        Self { hew: 0.0 }
     }
 }
 
 impl State for ExampleGame {
     fn update(&mut self, _context: &mut Context) -> OptionalTransition {
         self.hew = (self.hew + 1.0) % 360.0;
-        None 
+        None
     }
 
     fn render(&mut self, context: &mut Context) -> RenderResult {
