@@ -10,7 +10,7 @@ pub(crate) fn run_with_sdl(mut engine: Engine) {
             let mut event_pump = sdl_context.sdl.event_pump().unwrap();
             for event in event_pump.poll_iter() {
                 if let Event::Quit { .. } = event {
-                    has_window_quit = true; 
+                    has_window_quit = true;
                 }
             }
         }
