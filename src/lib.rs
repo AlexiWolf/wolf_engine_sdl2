@@ -42,3 +42,8 @@ pub use plugin::*;
 pub use video_context::*;
 
 pub use sdl2;
+
+pub(crate) fn log_sdl_version() {
+    let sdl_version = sdl2::version::version();
+    log::info!("Using SDL v{}", sdl_version);
+}
