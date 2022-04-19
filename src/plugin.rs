@@ -18,7 +18,8 @@ impl Plugin for SdlPlugin {
         let sdl_video_context = SdlVideoContext::new(&sdl_context.sdl, self.window_settings);
         Ok(engine_builder
             .with_subcontext(sdl_context)
-            .with_subcontext(sdl_video_context))
+            .with_subcontext(sdl_video_context)
+            .with_engine_core(Box::from(run_with_sdl)))
     }
 }
 
