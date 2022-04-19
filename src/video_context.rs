@@ -7,7 +7,8 @@ use wolf_engine::*;
 ///
 /// ```
 /// # use wolf_engine_sdl2::*;
-/// # let sdl_video_context = SdlVideoContext::new(SdlWindowSettings::default());
+/// # let sdl = sdl2::init().expect("Failed to initialize SDL");
+/// # let sdl_video_context = SdlVideoContext::new(&sdl, SdlWindowSettings::default());
 /// sdl_video_context.video;
 /// sdl_video_context.canvas;
 /// ```
