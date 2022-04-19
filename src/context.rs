@@ -15,7 +15,7 @@ impl SdlContext {
 
 impl Default for SdlContext {
     fn default() -> Self {
-        Self::new() 
+        Self::new()
     }
 }
 

@@ -7,14 +7,14 @@
 //! ```
 //! use wolf_engine::*;
 //! use wolf_engine_sdl2::*;
-//! 
+//!
 //! # let my_game = EmptyState;
 //! EngineBuilder::new()
 //!     .with_plugin(Box::from(SdlPlugin::new(SdlWindowSettings::default())))
 //!     .build()
 //!     .run(Box::from(my_game));
 //! ```
-//! 
+//!
 //! SDL Subcontexts can be accessed through the [Context](wolf_engine::Context) object.
 //!
 //! ```
