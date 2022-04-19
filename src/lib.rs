@@ -1,9 +1,42 @@
-pub use sdl2;
+//! Provides [sdl2] integrations for [wolf_engine].
+//!
+//! # Example
+//!
+//! Load the [SdlPlugin] with the [EngineBuilder](wolf_engine::EngineBuilder).
+//!
+//! ```
+//! use wolf_engine::*;
+//! use wolf_engine_sdl2::*;
+//!
+//! # let my_game = EmptyState;
+//! EngineBuilder::new()
+//!     .with_plugin(Box::from(SdlPlugin::new(SdlWindowSettings::default())))
+//!     .build()
+//!     .run(Box::from(my_game));
+//! ```
+//!
+//! SDL Subcontexts can be accessed through the [Context](wolf_engine::Context) object.
+//!
+//! ```
+//! # use wolf_engine::*;
+//! # use wolf_engine_sdl2::*;
+//! #
+//! # let context = Context::new();
+//! #
+//! if let Some(Ok(sdl)) = context.try_borrow::<SdlContext>() {
+//!     // Do something cool.
+//! };
+//!
+//! if let Some(Ok(sdl_video)) = context.try_borrow_mut::<SdlVideoContext>() {
+//!     // Do something cool.
+//! };
+//! ```
 
-#[cfg(test)]
-mod sdl2_plugin_tests {
-    #[test]
-    fn should_work() {
-        assert!(true, "Hello, World!");
-    }
-}
+mod context;
+mod plugin;
+mod video_context;
+pub use context::*;
+pub use plugin::*;
+pub use video_context::*;
+
+pub use sdl2;
