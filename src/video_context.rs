@@ -4,24 +4,15 @@ use wolf_engine::*;
 /// Provides access to [sdl2]'s [WindowCanvas] and [VideoSubsystem]. 
 ///
 /// # Examples
-/// 
-/// To access references to [sdl2]'s video types, use the Video Context's accessors:
 ///
 /// ```
 /// # use wolf_engine_sdl2::*;
 /// # let sdl_video_context = SdlVideoContext::new(SdlWindowSettings::default());
-/// // Get immutable access to the video subsystem and canvas.
-/// let video_subsystem = sdl_video_context.video();
-/// let window_canvas = sdl_video_context.canvas();
-/// # drop(video_subsystem);
-/// # drop(window_canvas);
-///
-/// // Get mutable access to the video subsystem and canvas.
-/// let video_subsystem_mut = sdl_video_context.video_mut();
-/// let window_canvas = sdl_video_context.canvas_mut();
+/// sdl_video_context.video;
+/// sdl_video_context.canvas;
 /// ```
 ///
-/// From there, you can use SDL as you would normally.
+/// Since the stored type are just the [sdl2] types, you use them as you normally would.
 pub struct SdlVideoContext {
     video: VideoSubsystem,
     canvas: WindowCanvas,
