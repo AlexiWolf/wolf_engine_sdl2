@@ -2,6 +2,7 @@ use crate::*;
 use wolf_engine::*;
 
 pub fn run_with_sdl(mut engine: Engine) {
+    log_sdl_version();
     while engine.state_stack.is_not_empty() {
         engine 
             .scheduler
