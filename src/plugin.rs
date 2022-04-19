@@ -16,7 +16,7 @@ impl SdlPlugin {
 impl Plugin for SdlPlugin {
     fn setup(&mut self, engine_builder: EngineBuilder) -> PluginResult {
         let sdl_context = SdlContext::new(); 
-        let sdl_video_context = SdlVideoContext::new(&sdl_context.sdl, SdlWindowSettings::default()); 
+        let sdl_video_context = SdlVideoContext::new(&sdl_context.sdl, self.window_settings); 
         Ok(engine_builder
             .with_subcontext(sdl_context)
             .with_subcontext(sdl_video_context))
