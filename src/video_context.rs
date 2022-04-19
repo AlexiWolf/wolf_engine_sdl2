@@ -1,5 +1,5 @@
 use wolf_engine::*;
-use sdl2::{Sdl, VideoSubsystem, render::WindowCanvas};
+use sdl2::{Sdl, VideoSubsystem, render::WindowCanvas, pixels::Color};
 
 /// Provides access to [sdl2]'s [WindowCanvas] and [VideoSubsystem]. 
 ///
@@ -33,11 +33,13 @@ impl SdlVideoContext {
             .position_centered()
             .build()
             .expect("Failed to create the window");
-        let canvas = window
+        let mut canvas = window
             .into_canvas()
             .present_vsync()
             .build()
             .expect("Failed to create the window canvas");
+        canvas.set_draw_color(Color::BLACK);
+        canvas.present();
         Self {
             video,
             canvas,
