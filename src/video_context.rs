@@ -1,5 +1,5 @@
-use sdl2::{VideoSubsystem, render::WindowCanvas};
 use wolf_engine::*;
+use sdl2::{Sdl, VideoSubsystem, render::WindowCanvas};
 
 /// Provides access to [sdl2]'s [WindowCanvas] and [VideoSubsystem]. 
 ///
@@ -20,7 +20,7 @@ pub struct SdlVideoContext {
 }
 
 impl SdlVideoContext {
-    pub fn new(window_settings: SdlWindowSettings) -> Self {
+    pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
         Self {
             video: todo!(),
             canvas: todo!(),
