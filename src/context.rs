@@ -1,6 +1,7 @@
 use sdl2::Sdl;
 use wolf_engine::*;
 
+/// Provides access to the main [Sdl] instance.
 pub struct SdlContext {
     pub sdl: Sdl,
 }
