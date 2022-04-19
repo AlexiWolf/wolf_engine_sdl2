@@ -25,22 +25,6 @@ impl SdlVideoContext {
             canvas: todo!(),
         }
     }
-
-    pub fn video() -> &'static VideoSubsystem {
-        todo!() 
-    }
-
-    pub fn video_mut() -> &'static mut VideoSubsystem {
-        todo!() 
-    }
-
-    pub fn canvas() -> &'static WindowCanvas {
-        todo!()
-    }
-
-    pub fn canvas_mut() -> &'static mut WindowCanvas {
-        todo!()
-    }
 }
 
 impl Subcontext for SdlVideoContext {}
