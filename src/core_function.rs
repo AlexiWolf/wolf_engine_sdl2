@@ -2,7 +2,7 @@ use crate::*;
 use wolf_engine::*;
 use sdl2::event::Event;
 
-pub fn run_with_sdl(mut engine: Engine) {
+pub(crate) fn run_with_sdl(mut engine: Engine) {
     log_sdl_version();
     let mut has_window_quit = false;
     while engine.state_stack.is_not_empty() {
