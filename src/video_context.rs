@@ -14,8 +14,8 @@ use wolf_engine::*;
 ///
 /// Since the stored type are just the [sdl2] types, you use them as you normally would.
 pub struct SdlVideoContext {
-    video: VideoSubsystem,
-    canvas: WindowCanvas,
+    pub video: VideoSubsystem,
+    pub canvas: WindowCanvas,
 }
 
 impl SdlVideoContext {
