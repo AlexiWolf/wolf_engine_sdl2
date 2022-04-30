@@ -1,7 +1,7 @@
 use crate::*;
 use sdl2::event::Event;
-use wolf_engine::*;
 use wolf_engine::utils::*;
+use wolf_engine::*;
 
 pub(crate) fn run_with_sdl(mut engine: Engine) {
     log_sdl_version();
