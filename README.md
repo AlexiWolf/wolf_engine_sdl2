@@ -1,4 +1,7 @@
 # Wolf Engine SDL2
+[![CI](https://github.com/AlexiWolf/wolf_engine_sdl2/actions/workflows/ci.yml/badge.svg)](https://github.com/AlexiWolf/wolf_engine_sdl2/actions/workflows/ci.yml)
+[![Crates.io](https://img.shields.io/crates/l/wolf_engine_sdl2)](https://github.com/AlexiWolf/wolf_engine_sdl2#license)
+[![Crates.io](https://img.shields.io/crates/v/wolf_engine_sdl2)](https://crates.io/crates/wolf_engine_sdl2)
 
 SDL2 integration plugin for [Wolf Engine](https://github.com/AlexiWolf/wolf_engine).  
 This plugin uses the [Rust SDL2](https://github.com/Rust-SDL2/rust-sdl2) bindings to work with SDL2.
