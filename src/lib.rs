@@ -6,15 +6,15 @@
 //!
 //! ```ignore
 //! wolf_engine_sdl2 = "*"
-//! sdl2 = "*" 
+//! sdl2 = "*"
 //! ```
 //!
-//! # Example 
+//! # Example
 //!
-//! The main job of this package is to provide thin [Subcontext](wolf_engine::Subcontext) 
-//! wrappers around the normal [sdl2] types, and a [Plugin](wolf_engine::Plugin) to set 
-//! everything up, allowing [wolf_engine] to manage sdl2 for you.  The [sdl2] objects are 
-//! accessible through public fields on the [Subcontexts](wolf_engine::Subcontext), and 
+//! The main job of this package is to provide thin [Subcontext](wolf_engine::Subcontext)
+//! wrappers around the normal [sdl2] types, and a [Plugin](wolf_engine::Plugin) to set
+//! everything up, allowing [wolf_engine] to manage sdl2 for you.  The [sdl2] objects are
+//! accessible through public fields on the [Subcontexts](wolf_engine::Subcontext), and
 //! their normal usage is not changed.
 //!
 //! Load the [SdlPlugin] with the [EngineBuilder](wolf_engine::EngineBuilder) at startup.
@@ -44,7 +44,7 @@
 //! };
 //! ```
 //!
-//! For a more complete usage example, see the 
+//! For a more complete usage example, see the
 //! [Quickstart Example](https://github.com/AlexiWolf/wolf_engine_sdl2/tree/main/examples/quickstart).
 
 mod context;
