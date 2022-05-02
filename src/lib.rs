@@ -38,7 +38,7 @@
 //! #
 //! # let context = Context::new();
 //! #
-//! if let Some(Ok(sdl_video)) = context.try_borrow_mut::<SdlVideoContext>() {
+//! if let Some(Ok(mut sdl_video)) = context.try_borrow_mut::<SdlVideoContext>() {
 //!     sdl_video.canvas.clear();
 //!     sdl_video.canvas.present();
 //! };
