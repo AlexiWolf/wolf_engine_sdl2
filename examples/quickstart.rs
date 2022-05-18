@@ -1,5 +1,6 @@
 use colors_transform::{Color, Hsl};
 use log::*;
+use sdl2::{pixels::Color as SdlColor, gfx::primitives::DrawRenderer};
 use wolf_engine::*;
 use wolf_engine_sdl2::*;
 
@@ -41,6 +42,7 @@ impl State for ExampleGame {
                 color.get_blue() as u8,
             ));
             sdl.canvas.clear();
+            sdl.canvas.string(10, 10, "Hello, SDL2!", SdlColor::BLACK).unwrap();
             sdl.canvas.present();
         }
     }
