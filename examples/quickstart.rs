@@ -1,6 +1,5 @@
 use colors_transform::{Color, Hsl};
 use log::*;
-use sdl2::pixels::Color as SdlColor;
 use wolf_engine::*;
 use wolf_engine_sdl2::*;
 
