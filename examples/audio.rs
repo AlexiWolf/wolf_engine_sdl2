@@ -23,7 +23,10 @@ impl MainState {
 }
 
 impl State for MainState {
-    fn update(&mut self, _context: &mut Context) -> OptionalTransition {
+    fn update(&mut self, context: &mut Context) -> OptionalTransition {
+        if let Some(Ok(mut audio)) = context.try_borrow_mut::<SdlAudioContext>() {
+
+        }
         None
     }
 
