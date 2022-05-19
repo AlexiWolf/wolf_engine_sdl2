@@ -1,5 +1,7 @@
+use std::{borrow::Cow, path::PathBuf};
+
 use log::*;
-use sdl2::audio::{AudioCallback, AudioDevice, AudioSpecWAV};
+use sdl2::audio::{AudioCallback, AudioDevice, AudioSpecWAV, AudioCVT, AudioSpecDesired};
 use wolf_engine::*;
 use wolf_engine_sdl2::*;
 
@@ -28,15 +30,36 @@ impl MainState {
 
 impl State for MainState {
     fn setup(&mut self, context: &mut Context) {
-        let wav_spec = AudioSpecWAV::load_wav("examples/assets/rain.wav")
-            .expect("Failed to load rain.wav");
-        if let Some(Ok(mut audio)) = context.try_borrow_mut::<SdlAudioContext>() {
-            self.audio_device = audio.subsystem.open_playback(None, &wav_spec, |spec| {
-
-            }).expect("Failed to create audio device");
+        if let Some(Ok(audio)) = context.try_borrow::<SdlAudioContext>() {
+            let desired_spec = AudioSpecDesired {
+                freq: Some(44_100),
+                channels: Some(1),
+                samples: None,
+            };
+            self.audio_device = Some(
+                audio.subsystem.open_playback(None, &desired_spec, |spec| {
+                    let wav_spec = AudioSpecWAV::load_wav(Cow::from(PathBuf::from("examples/assets/rain.wav")))
+                        .expect("Failed to load rain.wav");
+                    let cvt = AudioCVT::new(
+                        wav_spec.format,
+                        wav_spec.channels,
+                        wav_spec.freq,
+                        spec.format,
+                        spec.channels,
+                        spec.freq,
+                    ).expect("Could not convert wav file");
+                    let data = cvt.convert(wav_spec.buffer().to_vec());
+                    Sound {
+                        data,
+                        volume: 0.25,
+                        pos: 0,
+                    }
+                }).expect("Failed to create audio device")
+            );
+            self.audio_device.as_ref().unwrap().resume();
         }
     }
-    fn update(&mut self, context: &mut Context) -> OptionalTransition {
+    fn update(&mut self, _context: &mut Context) -> OptionalTransition {
         None
     }
 
