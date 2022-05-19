@@ -50,10 +50,13 @@
 mod context;
 mod core_function;
 mod plugin;
+mod audio_context;
 mod video_context;
+
 pub use context::*;
 pub(crate) use core_function::*;
 pub use plugin::*;
+pub use audio_context::*;
 pub use video_context::*;
 
 pub(crate) fn log_sdl_version() {
