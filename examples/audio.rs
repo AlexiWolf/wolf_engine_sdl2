@@ -32,8 +32,8 @@ impl State for MainState {
     fn setup(&mut self, context: &mut Context) {
         if let Some(Ok(audio)) = context.try_borrow::<SdlAudioContext>() {
             let desired_spec = AudioSpecDesired {
-                freq: Some(44_100),
-                channels: Some(1),
+                freq: Some(48_000),
+                channels: Some(2),
                 samples: None,
             };
             self.audio_device = Some(
@@ -82,8 +82,8 @@ impl AudioCallback for Sound {
     fn callback(&mut self, out: &mut [Self::Channel]) {
         for dst in out.iter_mut() {
             let pre_scale = *self.data.get(self.pos).unwrap_or(&128);
-            let scaled_signed_float = (pre_scale as f32 - 128.0) * self.volume;
-            let scaled = (scaled_signed_float + 128.0) as u8;
+             let scaled_signed_float = (pre_scale as f32 - 128.0) * self.volume;
+             let scaled = (scaled_signed_float + 128.0) as u8;
             *dst = scaled;
             self.pos += 1;
         }
