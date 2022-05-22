@@ -4,7 +4,7 @@ use wolf_engine::*;
 use wolf_engine_sdl2::*;
 
 pub fn main() {
-    logging::initialize_logging(LevelFilter::Info);
+    logging::initialize_logging(LevelFilter::Debug);
 
     if cfg!(feature = "mixer") {
         let window_settings = SdlWindowSettings::new("Mixer Demo", 800, 600);
