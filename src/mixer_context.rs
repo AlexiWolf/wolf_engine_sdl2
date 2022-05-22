@@ -7,9 +7,11 @@ pub struct SdlMixerContext {
 
 impl SdlMixerContext {
     pub fn new() -> Self {
+        let subsystem = mixer::init(mixer::InitFlag::all())
+            .expect("Failed to initialize mixer");
+
         Self {
-            subsystem: mixer::init(mixer::InitFlag::all())
-                .expect("Failed to initialize mixer"),
+            subsystem
         }
     }
 }
