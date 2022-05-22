@@ -1,11 +1,11 @@
 pub use wolf_engine::*;
 
-pub struct Sdl2MixerContext {}
+pub struct SdlMixerContext {}
 
-impl Sdl2MixerContext {
+impl SdlMixerContext {
     pub fn new() -> Self {
         Self {}
     }
 }
 
-impl Subcontext for Sdl2MixerContext {}
+impl Subcontext for SdlMixerContext {}
