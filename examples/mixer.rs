@@ -14,15 +14,25 @@ pub fn main() {
         .run(Box::from(MainState::new()));
 }
 
-pub struct MainState {}
+pub struct MainState<'a> {
+    music: mixer::Music<'a>,
+}
 
-impl MainState {
+impl<'a> MainState<'a> {
     pub fn new() -> Self {
-        Self {}
+        Self {
+            music: mixer::Music::from_file("examples/assets/rain.ogg")
+                .expect("Failed to load audio"),
+        }
     }
 }
 
-impl State for MainState {
+impl<'a> State for MainState<'a> {
+    fn setup(&mut self, _context: &mut Context) {
+        mixer::allocate_channels(4);
+        self.music.play(-1).unwrap();
+    }
+
     fn update(&mut self, _context: &mut Context) -> OptionalTransition {
         None
     }
