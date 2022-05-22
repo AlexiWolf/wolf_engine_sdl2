@@ -5,13 +5,16 @@ use wolf_engine_sdl2::*;
 
 pub fn main() {
     logging::initialize_logging(LevelFilter::Info);
-
+    
+    if cfg!(feature="mixer") {
     let window_settings = SdlWindowSettings::new("Mixer Demo", 800, 600);
-
     EngineBuilder::new()
         .with_plugin(Box::from(SdlPlugin::new(window_settings)))
         .build()
         .run(Box::from(MainState::new()));
+    } else {
+        error!("The mixer feature is required for this demo: Try running with \"--features mixer\"");
+    }
 }
 
 pub struct MainState<'a> {
