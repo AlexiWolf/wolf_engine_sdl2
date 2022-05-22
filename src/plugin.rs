@@ -13,15 +13,17 @@ impl SdlPlugin {
 }
 
 impl Plugin for SdlPlugin {
-    fn setup(&mut self, engine_builder: EngineBuilder) -> PluginResult {
+    fn setup(&mut self, mut engine_builder: EngineBuilder) -> PluginResult {
         let sdl_context = SdlContext::new();
         let sdl_video_context = SdlVideoContext::new(&sdl_context.sdl, self.window_settings);
         let sdl_audio_context = SdlAudioContext::new(&sdl_context.sdl);
-        Ok(engine_builder
+        engine_builder = engine_builder
             .with_subcontext(sdl_context)
             .with_subcontext(sdl_video_context)
             .with_subcontext(sdl_audio_context)
-            .with_engine_core(Box::from(run_with_sdl)))
+            .with_engine_core(Box::from(run_with_sdl));
+        
+        Ok(engine_builder)
     }
 }
 
