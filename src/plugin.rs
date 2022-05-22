@@ -22,9 +22,10 @@ impl Plugin for SdlPlugin {
             .with_subcontext(sdl_video_context)
             .with_subcontext(sdl_audio_context)
             .with_engine_core(Box::from(run_with_sdl));
-        #[cfg(feature="mixer")]
+        #[cfg(feature = "mixer")]
         {
-            engine_builder = engine_builder.with_subcontext(SdlMixerContext::new(MixerSettings::default()));
+            engine_builder =
+                engine_builder.with_subcontext(SdlMixerContext::new(MixerSettings::default()));
         }
         Ok(engine_builder)
     }

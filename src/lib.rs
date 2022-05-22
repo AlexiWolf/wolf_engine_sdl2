@@ -47,19 +47,19 @@
 //! For a more complete usage example, see the
 //! [Quickstart Example](https://github.com/AlexiWolf/wolf_engine_sdl2/tree/main/examples/quickstart).
 
+mod audio_context;
 mod context;
 mod core_function;
 mod plugin;
-mod audio_context;
 mod video_context;
 
 #[cfg(feature = "mixer")]
 mod mixer_context;
 
+pub use audio_context::*;
 pub use context::*;
 pub(crate) use core_function::*;
 pub use plugin::*;
-pub use audio_context::*;
 pub use video_context::*;
 
 #[cfg(feature = "mixer")]

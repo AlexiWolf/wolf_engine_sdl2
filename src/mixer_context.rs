@@ -1,5 +1,5 @@
-use wolf_engine::*;
 use sdl2::mixer;
+use wolf_engine::*;
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
 pub struct MixerSettings {
@@ -30,14 +30,16 @@ pub struct SdlMixerContext {
 
 impl SdlMixerContext {
     pub fn new(settings: MixerSettings) -> Self {
-        mixer::open_audio(settings.frequency, settings.format, settings.channels, settings.chunk_size)
-            .expect("Failed to open mixer");
-        let subsystem = mixer::init(settings.init_flag)
-            .expect("Failed to initialize mixer");
+        mixer::open_audio(
+            settings.frequency,
+            settings.format,
+            settings.channels,
+            settings.chunk_size,
+        )
+        .expect("Failed to open mixer");
+        let subsystem = mixer::init(settings.init_flag).expect("Failed to initialize mixer");
 
-        Self {
-            subsystem
-        }
+        Self { subsystem }
     }
 }
 

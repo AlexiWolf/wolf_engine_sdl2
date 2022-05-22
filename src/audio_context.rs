@@ -8,7 +8,9 @@ pub struct SdlAudioContext {
 impl SdlAudioContext {
     pub fn new(sdl: &Sdl) -> Self {
         Self {
-            subsystem: sdl.audio().expect("Failed to initialize the audio subsystem"),
+            subsystem: sdl
+                .audio()
+                .expect("Failed to initialize the audio subsystem"),
         }
     }
 }

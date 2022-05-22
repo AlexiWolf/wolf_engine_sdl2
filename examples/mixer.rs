@@ -1,19 +1,21 @@
 use log::*;
-use sdl2::{pixels::Color, mixer};
+use sdl2::{mixer, pixels::Color};
 use wolf_engine::*;
 use wolf_engine_sdl2::*;
 
 pub fn main() {
     logging::initialize_logging(LevelFilter::Info);
-    
-    if cfg!(feature="mixer") {
-    let window_settings = SdlWindowSettings::new("Mixer Demo", 800, 600);
-    EngineBuilder::new()
-        .with_plugin(Box::from(SdlPlugin::new(window_settings)))
-        .build()
-        .run(Box::from(MainState::new()));
+
+    if cfg!(feature = "mixer") {
+        let window_settings = SdlWindowSettings::new("Mixer Demo", 800, 600);
+        EngineBuilder::new()
+            .with_plugin(Box::from(SdlPlugin::new(window_settings)))
+            .build()
+            .run(Box::from(MainState::new()));
     } else {
-        error!("The mixer feature is required for this demo: Try running with \"--features mixer\"");
+        error!(
+            "The mixer feature is required for this demo: Try running with \"--features mixer\""
+        );
     }
 }
 
@@ -47,4 +49,3 @@ impl<'a> State for MainState<'a> {
         }
     }
 }
-

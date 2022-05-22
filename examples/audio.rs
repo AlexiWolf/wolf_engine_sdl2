@@ -1,7 +1,7 @@
 use std::{borrow::Cow, path::PathBuf};
 
 use log::*;
-use sdl2::audio::{AudioCallback, AudioDevice, AudioSpecWAV, AudioCVT, AudioSpecDesired};
+use sdl2::audio::{AudioCVT, AudioCallback, AudioDevice, AudioSpecDesired, AudioSpecWAV};
 use wolf_engine::*;
 use wolf_engine_sdl2::*;
 
@@ -22,9 +22,7 @@ struct MainState {
 
 impl MainState {
     pub fn new() -> Self {
-        Self {
-            audio_device: None,
-        }
+        Self { audio_device: None }
     }
 }
 
@@ -37,24 +35,30 @@ impl State for MainState {
                 samples: None,
             };
             self.audio_device = Some(
-                audio.subsystem.open_playback(None, &desired_spec, |spec| {
-                    let wav_spec = AudioSpecWAV::load_wav(Cow::from(PathBuf::from("examples/assets/rain.wav")))
+                audio
+                    .subsystem
+                    .open_playback(None, &desired_spec, |spec| {
+                        let wav_spec = AudioSpecWAV::load_wav(Cow::from(PathBuf::from(
+                            "examples/assets/rain.wav",
+                        )))
                         .expect("Failed to load rain.wav");
-                    let cvt = AudioCVT::new(
-                        wav_spec.format,
-                        wav_spec.channels,
-                        wav_spec.freq,
-                        spec.format,
-                        spec.channels,
-                        spec.freq,
-                    ).expect("Could not convert wav file");
-                    let data = cvt.convert(wav_spec.buffer().to_vec());
-                    Sound {
-                        data,
-                        volume: 0.25,
-                        pos: 0,
-                    }
-                }).expect("Failed to create audio device")
+                        let cvt = AudioCVT::new(
+                            wav_spec.format,
+                            wav_spec.channels,
+                            wav_spec.freq,
+                            spec.format,
+                            spec.channels,
+                            spec.freq,
+                        )
+                        .expect("Could not convert wav file");
+                        let data = cvt.convert(wav_spec.buffer().to_vec());
+                        Sound {
+                            data,
+                            volume: 0.25,
+                            pos: 0,
+                        }
+                    })
+                    .expect("Failed to create audio device"),
             );
             self.audio_device.as_ref().unwrap().resume();
         }
@@ -82,8 +86,8 @@ impl AudioCallback for Sound {
     fn callback(&mut self, out: &mut [Self::Channel]) {
         for dst in out.iter_mut() {
             let pre_scale = *self.data.get(self.pos).unwrap_or(&128);
-             let scaled_signed_float = (pre_scale as f32 - 128.0) * self.volume;
-             let scaled = (scaled_signed_float + 128.0) as u8;
+            let scaled_signed_float = (pre_scale as f32 - 128.0) * self.volume;
+            let scaled = (scaled_signed_float + 128.0) as u8;
             *dst = scaled;
             self.pos += 1;
         }
