@@ -38,6 +38,16 @@ impl Default for MixerSettings {
     }
 }
 
+/// Provides setup and access to [mixer].
+/// 
+/// See [sdl2::mixer] for more information.
+///
+/// # Examples
+///
+/// Using the default settings:
+/// ```
+/// let mixer_context = SdlMixerContext::new(MixerSettings::default());
+/// ```
 pub struct SdlMixerContext {
     pub subsystem: mixer::Sdl2MixerContext,
 }
