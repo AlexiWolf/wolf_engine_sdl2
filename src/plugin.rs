@@ -23,7 +23,9 @@ impl Plugin for SdlPlugin {
             .with_subcontext(sdl_audio_context)
             .with_engine_core(Box::from(run_with_sdl));
         #[cfg(feature="mixer")]
-        engine_builder.with_subcontext(SdlMixerContext::new());
+        {
+            engine_builder = engine_builder.with_subcontext(SdlMixerContext::new());
+        }
         Ok(engine_builder)
     }
 }
