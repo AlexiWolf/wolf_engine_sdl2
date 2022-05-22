@@ -1,5 +1,3 @@
-use std::fmt::Display;
-
 use log::*;
 use sdl2::mixer;
 use wolf_engine::*;
