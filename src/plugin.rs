@@ -24,7 +24,7 @@ impl Plugin for SdlPlugin {
             .with_engine_core(Box::from(run_with_sdl));
         #[cfg(feature="mixer")]
         {
-            engine_builder = engine_builder.with_subcontext(SdlMixerContext::new());
+            engine_builder = engine_builder.with_subcontext(SdlMixerContext::new(MixerSettings::default()));
         }
         Ok(engine_builder)
     }
