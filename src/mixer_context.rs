@@ -1,3 +1,6 @@
+use std::fmt::Display;
+
+use log::*;
 use sdl2::mixer;
 use wolf_engine::*;
 
@@ -38,9 +41,28 @@ impl SdlMixerContext {
         )
         .expect("Failed to open mixer");
         let subsystem = mixer::init(settings.init_flag).expect("Failed to initialize mixer");
-
         Self { subsystem }
     }
 }
 
 impl Subcontext for SdlMixerContext {}
+
+pub(crate) fn log_mixer_version() {
+    log::info!("Using Mixer v{}", mixer::get_linked_version());
+}
+
+pub(crate) fn log_music_decoders() {
+    let decoders = mixer::get_music_decoders_number();
+    debug!("available music decoders: {}", decoders);
+    for i in 0..decoders {
+        debug!("\tdecoder {} => {}", i, mixer::get_music_decoder(i));
+    }
+}
+
+pub(crate) fn log_chunk_decoders() {
+    let decoders = mixer::get_chunk_decoders_number();
+    debug!("available chunk(sample) decoders: {}", decoders);
+    for i in 0..decoders {
+        debug!("\tdecoder {} => {}", i, mixer::get_chunk_decoder(i));
+    }
+}

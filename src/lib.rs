@@ -68,4 +68,15 @@ pub use mixer_context::*;
 pub(crate) fn log_sdl_version() {
     let sdl_version = sdl2::version::version();
     log::info!("Using SDL v{}", sdl_version);
+    log_mixer_information();
 }
+
+fn log_mixer_information() {
+    #[cfg(feature = "mixer")]
+    {
+        log_mixer_version();
+        log_chunk_decoders();
+        log_music_decoders(); 
+    }
+}
+
