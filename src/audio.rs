@@ -1,6 +1,7 @@
 use sdl2::{AudioSubsystem, Sdl};
 use wolf_engine::*;
 
+/// Provides access to [sdl2]'s [AudioSubsystem].
 pub struct SdlAudioContext {
     pub subsystem: AudioSubsystem,
 }
