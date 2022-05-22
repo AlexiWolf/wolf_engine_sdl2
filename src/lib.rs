@@ -53,11 +53,17 @@ mod plugin;
 mod audio_context;
 mod video_context;
 
+#[cfg(feature = "mixer")]
+mod mixer_context;
+
 pub use context::*;
 pub(crate) use core_function::*;
 pub use plugin::*;
 pub use audio_context::*;
 pub use video_context::*;
+
+#[cfg(feature = "mixer")]
+pub use mixer_context::*;
 
 pub(crate) fn log_sdl_version() {
     let sdl_version = sdl2::version::version();
