@@ -1,4 +1,5 @@
 use crate::*;
+use sdl2::mixer::Sdl2MixerContext;
 use wolf_engine::*;
 
 /// Provides [sdl2] integrations for [wolf_engine].
@@ -22,7 +23,8 @@ impl Plugin for SdlPlugin {
             .with_subcontext(sdl_video_context)
             .with_subcontext(sdl_audio_context)
             .with_engine_core(Box::from(run_with_sdl));
-        
+        #[cfg(feature="mixer")]
+        engine_builder.with_subcontext(Box::from(Sdl2MixerContext));
         Ok(engine_builder)
     }
 }
