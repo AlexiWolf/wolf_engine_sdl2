@@ -1,6 +1,6 @@
 pub use wolf_engine::*;
 
-pub struct MixerContext {}
+pub struct Sdl2MixerContext {}
 
 impl MixerContext {
     pub fn new() -> Self {
