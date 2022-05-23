@@ -11,10 +11,10 @@ pub struct MixerSettings {
     /// The desired [mixer::AudioFormat].
     pub format: mixer::AudioFormat,
 
-    /// The number of audio channels.
+    /// The desired number of audio channels.
     pub channels: i32,
 
-    /// The audio chunk size.  See [mixer::open_audio()] for more details.
+    /// The desired audio chunk size.  See [mixer::open_audio()] for more details.
     pub chunk_size: i32,
 
     /// The desired number of channels to allocate.  See [mixer::allocate_channels()] for
