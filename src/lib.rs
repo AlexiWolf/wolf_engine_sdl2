@@ -76,7 +76,6 @@ fn log_mixer_information() {
     {
         log_mixer_version();
         log_chunk_decoders();
-        log_music_decoders(); 
+        log_music_decoders();
     }
 }
-

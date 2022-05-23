@@ -10,14 +10,14 @@ pub struct MixerSettings {
 
     /// The desired [mixer::AudioFormat].
     format: mixer::AudioFormat,
-    
+
     /// The number of audio channels.
     channels: i32,
 
     /// The audio chunk size.  See [mixer::open_audio()] for more details.
     chunk_size: i32,
 
-    /// The desired number of channels to allocate.  See [mixer::allocate_channels()] for 
+    /// The desired number of channels to allocate.  See [mixer::allocate_channels()] for
     /// more details.
     allocate_channels: i32,
 
@@ -39,7 +39,7 @@ impl Default for MixerSettings {
 }
 
 /// Provides setup and access to [mixer].
-/// 
+///
 /// See [sdl2::mixer] for more information.
 ///
 /// # Examples
