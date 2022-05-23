@@ -31,6 +31,10 @@ impl SdlPlugin {
     pub fn new(window_settings: SdlWindowSettings) -> Self {
         Self { window_settings }
     }
+
+    pub fn builder() -> SdlPluginBuilder {
+        SdlPluginBuilder::new()
+    }
 }
 
 impl Default for SdlPlugin {
