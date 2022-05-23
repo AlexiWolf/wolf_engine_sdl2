@@ -19,6 +19,7 @@ use wolf_engine::*;
 /// # use wolf_engine_sdl2::*;
 /// #
 /// let sdl = SdlPlugin::builder()
+///     // Custom settings go here.
 ///     .build()
 ///     .expect("Failed to initialize SDL2");
 /// ```
