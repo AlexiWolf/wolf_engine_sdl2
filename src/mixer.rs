@@ -6,23 +6,23 @@ use wolf_engine::*;
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
 pub struct MixerSettings {
     /// The desired audio frequency.
-    frequency: i32,
+    pub frequency: i32,
 
     /// The desired [mixer::AudioFormat].
-    format: mixer::AudioFormat,
+    pub format: mixer::AudioFormat,
 
     /// The number of audio channels.
-    channels: i32,
+    pub channels: i32,
 
     /// The audio chunk size.  See [mixer::open_audio()] for more details.
-    chunk_size: i32,
+    pub chunk_size: i32,
 
     /// The desired number of channels to allocate.  See [mixer::allocate_channels()] for
     /// more details.
-    allocate_channels: i32,
+    pub allocate_channels: i32,
 
     /// The desired [mixer::InitFlag].
-    init_flag: mixer::InitFlag,
+    pub init_flag: mixer::InitFlag,
 }
 
 impl Default for MixerSettings {
