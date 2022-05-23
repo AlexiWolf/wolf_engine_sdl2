@@ -46,6 +46,8 @@ impl Default for MixerSettings {
 ///
 /// Using the default settings:
 /// ```
+/// # use wolf_engine_sdl2::*;
+/// #
 /// let mixer_context = SdlMixerContext::new(MixerSettings::default());
 /// ```
 pub struct SdlMixerContext {
