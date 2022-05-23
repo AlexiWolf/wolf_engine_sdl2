@@ -79,3 +79,15 @@ mod sdl2_plugin_tests {
         assert!(engine.context.borrow::<SdlVideoContext>().is_some());
     }
 }
+
+pub struct SdlPluginBuilder {}
+
+impl SdlPluginBuilder {
+    pub fn new() -> Self {
+        Self {}
+    }
+
+    pub fn build(self) -> Result<SdlPlugin, String> {
+        Ok(SdlPlugin::default()) 
+    }
+}
