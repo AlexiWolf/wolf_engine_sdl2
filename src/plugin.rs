@@ -12,6 +12,16 @@ use wolf_engine::*;
 /// #
 /// let sdl = SdlPlugin::default();
 /// ```
+///
+/// To use custom settings, use the [SdlPluginBuilder].
+///
+/// ```
+/// # use wolf_engine_sdl2::*;
+/// #
+/// let sdl = SdlPluginBuilder::new()
+///     .build()
+///     .expect("Failed to initialize SDL2");
+/// ```
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
 }
