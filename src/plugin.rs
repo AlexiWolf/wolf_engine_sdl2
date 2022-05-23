@@ -2,6 +2,16 @@ use crate::*;
 use wolf_engine::*;
 
 /// Provides [sdl2] integrations for [wolf_engine].
+/// 
+/// # Examples
+///
+/// If you want the default settings, you can use [SdlPlugin::default()]
+///
+/// ```
+/// # use wolf_engine_sdl2::*;
+/// #
+/// let sdl = SdlPlugin::default();
+/// ```
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
 }
