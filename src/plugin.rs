@@ -22,6 +22,12 @@ impl SdlPlugin {
     }
 }
 
+impl Default for SdlPlugin {
+    fn default() -> Self {
+        Self::new(SdlWindowSettings::default())
+    }
+}
+
 impl Plugin for SdlPlugin {
     fn setup(&mut self, mut engine_builder: EngineBuilder) -> PluginResult {
         let sdl_context = SdlContext::new();
