@@ -47,16 +47,35 @@
 //! For a more complete usage example, see the
 //! [Quickstart Example](https://github.com/AlexiWolf/wolf_engine_sdl2/tree/main/examples/quickstart).
 
+mod audio;
 mod context;
 mod core_function;
 mod plugin;
-mod video_context;
+mod video;
+
+#[cfg(feature = "mixer")]
+mod mixer;
+
+pub use audio::*;
 pub use context::*;
 pub(crate) use core_function::*;
 pub use plugin::*;
-pub use video_context::*;
+pub use video::*;
+
+#[cfg(feature = "mixer")]
+pub use mixer::*;
 
 pub(crate) fn log_sdl_version() {
     let sdl_version = sdl2::version::version();
     log::info!("Using SDL v{}", sdl_version);
+    log_mixer_information();
+}
+
+fn log_mixer_information() {
+    #[cfg(feature = "mixer")]
+    {
+        log_mixer_version();
+        log_chunk_decoders();
+        log_music_decoders();
+    }
 }

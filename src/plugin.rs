@@ -13,13 +13,21 @@ impl SdlPlugin {
 }
 
 impl Plugin for SdlPlugin {
-    fn setup(&mut self, engine_builder: EngineBuilder) -> PluginResult {
+    fn setup(&mut self, mut engine_builder: EngineBuilder) -> PluginResult {
         let sdl_context = SdlContext::new();
         let sdl_video_context = SdlVideoContext::new(&sdl_context.sdl, self.window_settings);
-        Ok(engine_builder
+        let sdl_audio_context = SdlAudioContext::new(&sdl_context.sdl);
+        engine_builder = engine_builder
             .with_subcontext(sdl_context)
             .with_subcontext(sdl_video_context)
-            .with_engine_core(Box::from(run_with_sdl)))
+            .with_subcontext(sdl_audio_context)
+            .with_engine_core(Box::from(run_with_sdl));
+        #[cfg(feature = "mixer")]
+        {
+            engine_builder =
+                engine_builder.with_subcontext(SdlMixerContext::new(MixerSettings::default()));
+        }
+        Ok(engine_builder)
     }
 }
 

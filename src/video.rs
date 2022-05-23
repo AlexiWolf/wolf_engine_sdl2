@@ -9,20 +9,20 @@ use wolf_engine::*;
 /// # use wolf_engine_sdl2::*;
 /// # let sdl = sdl2::init().expect("Failed to initialize SDL");
 /// # let sdl_video_context = SdlVideoContext::new(&sdl, SdlWindowSettings::default());
-/// sdl_video_context.video;
+/// sdl_video_context.subsystem;
 /// sdl_video_context.canvas;
 /// ```
 ///
 /// Since the stored type are just the [sdl2] types, you use them as you normally would.
 pub struct SdlVideoContext {
-    pub video: VideoSubsystem,
+    pub subsystem: VideoSubsystem,
     pub canvas: WindowCanvas,
 }
 
 impl SdlVideoContext {
     pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
-        let video = sdl.video().expect("Failed to crate the video subsystem");
-        let window = video
+        let subsystem = sdl.video().expect("Failed to crate the video subsystem");
+        let window = subsystem
             .window(
                 window_settings.title,
                 window_settings.width,
@@ -38,7 +38,7 @@ impl SdlVideoContext {
             .expect("Failed to create the window canvas");
         canvas.set_draw_color(Color::BLACK);
         canvas.present();
-        Self { video, canvas }
+        Self { subsystem, canvas }
     }
 }
 
