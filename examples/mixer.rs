@@ -8,8 +8,9 @@ pub fn main() {
 
     if cfg!(feature = "mixer") {
         let window_settings = SdlWindowSettings::new("Mixer Demo", 800, 600);
+        let sdl_plugin = SdlPlugin::builder().with_window_settings(window_settings).build();
         EngineBuilder::new()
-            .with_plugin(Box::from(SdlPlugin::new(window_settings)))
+            .with_plugin(Box::from(sdl_plugin))
             .build()
             .run(Box::from(MainState::new()));
     } else {
