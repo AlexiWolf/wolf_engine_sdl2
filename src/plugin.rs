@@ -89,6 +89,10 @@ impl SdlPluginBuilder {
     pub fn build(self) -> Result<SdlPlugin, String> {
         Ok(SdlPlugin::default()) 
     }
+
+    pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
+        self
+    }
 }
 
 #[cfg(test)]
