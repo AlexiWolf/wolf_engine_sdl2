@@ -79,11 +79,15 @@ mod sdl2_plugin_tests {
     }
 }
 
-pub struct SdlPluginBuilder {}
+pub struct SdlPluginBuilder {
+    window_settings: SdlWindowSettings,
+}
 
 impl SdlPluginBuilder {
     pub fn new() -> Self {
-        Self {}
+        Self {
+            window_settings: Default::default(),
+        }
     }
 
     pub fn build(self) -> Result<SdlPlugin, String> {
