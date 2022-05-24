@@ -57,7 +57,7 @@ impl Subcontext for SdlVideoContext {}
 /// assert_eq!(window_settings.width, 800);
 /// assert_eq!(window_settings.height, 600);
 /// ```
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub struct SdlWindowSettings {
     pub title: &'static str,
     pub width: u32,
