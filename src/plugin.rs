@@ -21,7 +21,6 @@ use wolf_engine::*;
 /// let sdl = SdlPlugin::builder()
 ///     // Custom settings go here.
 ///     .build()
-///     .expect("Failed to initialize SDL2");
 /// ```
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
@@ -90,8 +89,8 @@ impl SdlPluginBuilder {
         }
     }
 
-    pub fn build(self) -> Result<SdlPlugin, String> {
-        Ok(SdlPlugin::new(self.window_settings))
+    pub fn build(self) -> SdlPlugin {
+        SdlPlugin::new(self.window_settings)
     }
 
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
