@@ -95,6 +95,7 @@ impl SdlPluginBuilder {
     }
 
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
+        self.window_settings = window_settings;
         self
     }
 }
