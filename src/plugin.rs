@@ -20,7 +20,7 @@ use wolf_engine::*;
 /// #
 /// let sdl = SdlPlugin::builder()
 ///     // Custom settings go here.
-///     .build()
+///     .build();
 /// ```
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
