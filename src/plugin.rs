@@ -111,5 +111,9 @@ mod sdl2_plugin_builder_tests {
             .with_window_settings(window_settings);
 
         assert_eq!(window_settings, builder.window_settings, "The window settings do not match");
+        
+        let plugin = builder.build().expect("Failed the plugin");
+
+        assert_eq!(window_settings, plugin.window_settings, "The plugin was not built with the correct window settings.");
     }
 }
