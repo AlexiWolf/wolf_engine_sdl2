@@ -91,3 +91,8 @@ impl SdlPluginBuilder {
         Ok(SdlPlugin::default()) 
     }
 }
+
+#[cfg(test)]
+mod sdl2_plugin_builder_tests {
+
+}
