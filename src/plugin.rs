@@ -104,5 +104,7 @@ mod sdl2_plugin_builder_tests {
         let window_settings = SdlWindowSettings::new("Test Window", 100, 100);
         let builder = SdlPlugin::builder()
             .with_window_settings(window_settings);
+
+        assert_eq!(window_settings, builder.window_settings, "The window settings do not match");
     }
 }
