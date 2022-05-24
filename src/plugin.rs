@@ -103,6 +103,6 @@ mod sdl2_plugin_builder_tests {
     fn should_set_window_settings() {
         let window_settings = SdlWindowSettings::new("Test Window", 100, 100);
         let builder = SdlPlugin::builder()
-            .with_window_settings(window_settings)
+            .with_window_settings(window_settings);
     }
 }
