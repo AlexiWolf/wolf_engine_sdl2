@@ -2,7 +2,7 @@ use crate::*;
 use wolf_engine::*;
 
 /// Provides [sdl2] integrations for [wolf_engine].
-/// 
+///
 /// # Examples
 ///
 /// If you want the default settings, you can use [SdlPlugin::default()]
@@ -91,7 +91,7 @@ impl SdlPluginBuilder {
     }
 
     pub fn build(self) -> Result<SdlPlugin, String> {
-        Ok(SdlPlugin::default()) 
+        Ok(SdlPlugin::new(self.window_settings))
     }
 
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
@@ -107,13 +107,18 @@ mod sdl2_plugin_builder_tests {
     #[test]
     fn should_set_window_settings() {
         let window_settings = SdlWindowSettings::new("Test Window", 100, 100);
-        let builder = SdlPlugin::builder()
-            .with_window_settings(window_settings);
+        let builder = SdlPlugin::builder().with_window_settings(window_settings);
 
-        assert_eq!(window_settings, builder.window_settings, "The window settings do not match");
-        
+        assert_eq!(
+            window_settings, builder.window_settings,
+            "The window settings do not match"
+        );
+
         let plugin = builder.build().expect("Failed the plugin");
 
-        assert_eq!(window_settings, plugin.window_settings, "The plugin was not built with the correct window settings.");
+        assert_eq!(
+            window_settings, plugin.window_settings,
+            "The plugin was not built with the correct window settings."
+        );
     }
 }
