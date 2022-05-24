@@ -93,5 +93,12 @@ impl SdlPluginBuilder {
 
 #[cfg(test)]
 mod sdl2_plugin_builder_tests {
+    use super::*;
 
+    #[test]
+    fn should_set_window_settings() {
+        let window_settings = SdlWindowSettings::new("Test Window", 100, 100);
+        let builder = SdlPlugin::builder()
+            .with_window_settings(window_settings)
+    }
 }
