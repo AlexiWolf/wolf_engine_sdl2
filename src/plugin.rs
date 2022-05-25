@@ -36,7 +36,7 @@ impl SdlPlugin {
 
 impl Default for SdlPlugin {
     fn default() -> Self {
-        Self::new(SdlWindowSettings::default())
+        Self::builder().build()
     }
 }
 
