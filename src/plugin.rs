@@ -120,4 +120,20 @@ mod sdl2_plugin_builder_tests {
             "The plugin was not built with the correct window settings."
         );
     }
+
+    #[test]
+    #[cfg(feature = "mixer")]
+    fn should_set_mixer_settings() {
+        use sdl2::mixer;
+
+        let mixer_settings = MixerSettings {
+            frequency: 48_000,
+            format: mixer::AUDIO_U8,
+            channels: 2,
+            chunk_size: 200,
+            allocate_channels: 4,
+            init_flag: mixer::InitFlag::all(),
+        };
+        let builder = SdlPlugin::builder().with_mixer_settings(mixer_settings);
+    }
 }
