@@ -93,7 +93,11 @@ impl SdlPluginBuilder {
     }
 
     pub fn build(self) -> SdlPlugin {
-        SdlPlugin::new(self.window_settings)
+        SdlPlugin {
+            window_settings: self.window_settings,
+            #[cfg(feature = "mixer")]
+            mixer_settings: self.mixer_settings,
+        }
     }
 
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
