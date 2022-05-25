@@ -92,7 +92,8 @@ impl SdlPluginBuilder {
             mixer_settings: Default::default(),
         }
     }
-
+    
+    /// Consumes the builder and creates an instance of [SdlPlugin] from it.
     pub fn build(self) -> SdlPlugin {
         SdlPlugin {
             window_settings: self.window_settings,
@@ -100,12 +101,14 @@ impl SdlPluginBuilder {
             mixer_settings: self.mixer_settings,
         }
     }
-
+    
+    /// Set custom [SdlWindowSettings].
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
         self.window_settings = window_settings;
         self
     }
 
+    /// Set custom [MixerSettings].
     #[cfg(feature = "mixer")]
     pub fn with_mixer_settings(mut self, mixer_settings: MixerSettings) -> Self {
         self.mixer_settings = mixer_settings;
