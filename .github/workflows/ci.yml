@@ -62,8 +62,8 @@ jobs:
     - name: Install Dependencies
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
-          sudo apt install -y libsdl2-gfx-dev libsdl2-gfx-1.0-0 \
-          libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-image-dev \
+          sudo apt install -y libsdl2-gfx-dev libsdl2-gfx-1.0-0 
+          libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-image-dev 
           libsdl2-image-2.0-0 xorg xvfb
         else
           echo "$RUNNER_OS not supported."
