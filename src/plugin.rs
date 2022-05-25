@@ -29,12 +29,6 @@ pub struct SdlPlugin {
 }
 
 impl SdlPlugin {
-    fn new(window_settings: SdlWindowSettings) -> Self {
-        Self { 
-            window_settings,
-        }
-    }
-
     pub fn builder() -> SdlPluginBuilder {
         SdlPluginBuilder::new()
     }
