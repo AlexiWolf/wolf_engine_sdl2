@@ -78,10 +78,10 @@ mod sdl2_plugin_tests {
 
 /// Build and customize an instance of [SdlPlugin].
 pub struct SdlPluginBuilder {
-    window_settings: SdlWindowSettings,
+    pub window_settings: SdlWindowSettings,
 
     #[cfg(feature = "mixer")]
-    mixer_settings: MixerSettings,
+    pub mixer_settings: MixerSettings,
 }
 
 impl SdlPluginBuilder {
