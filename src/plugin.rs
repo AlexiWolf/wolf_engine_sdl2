@@ -29,6 +29,7 @@ pub struct SdlPlugin {
 }
 
 impl SdlPlugin {
+    /// Create a new [SdlPluginBuilder].
     pub fn builder() -> SdlPluginBuilder {
         SdlPluginBuilder::default()
     }
