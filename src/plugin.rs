@@ -78,6 +78,7 @@ mod sdl2_plugin_tests {
 }
 
 /// Build and customize an instance of [SdlPlugin].
+#[derive(Default)]
 pub struct SdlPluginBuilder {
     /// The settings used to create the SDL window.
     pub window_settings: SdlWindowSettings,
@@ -108,16 +109,6 @@ impl SdlPluginBuilder {
     pub fn with_mixer_settings(mut self, mixer_settings: MixerSettings) -> Self {
         self.mixer_settings = mixer_settings;
         self
-    }
-}
-
-impl Default for SdlPluginBuilder {
-    fn default() -> Self {
-        Self {
-            window_settings: Default::default(),
-            #[cfg(feature = "mixer")]
-            mixer_settings: Default::default(),
-        }
     }
 }
 
