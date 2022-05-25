@@ -6,13 +6,13 @@ use wolf_engine_sdl2::*;
 
 pub fn main() {
     logging::initialize_logging(LevelFilter::Debug);
+    let window_settings = SdlWindowSettings::new("Hello, SDL and Wolf Engine!", 800, 600);
+    let sdl_plugin = SdlPlugin::builder()
+        .with_window_settings(window_settings)
+        .build();
 
     EngineBuilder::new()
-        .with_plugin(Box::from(SdlPlugin::new(SdlWindowSettings::new(
-            "Hello, SDL and Wolf Engine!",
-            800,
-            600,
-        ))))
+        .with_plugin(Box::from(sdl_plugin))
         .build()
         .run(Box::from(ExampleGame::new()));
 }

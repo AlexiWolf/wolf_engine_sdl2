@@ -25,7 +25,7 @@
 //!
 //! # let my_game = EmptyState;
 //! EngineBuilder::new()
-//!     .with_plugin(Box::from(SdlPlugin::new(SdlWindowSettings::default())))
+//!     .with_plugin(Box::from(SdlPlugin::default()))
 //!     .build()
 //!     .run(Box::from(my_game));
 //! ```
