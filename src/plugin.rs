@@ -106,6 +106,12 @@ impl SdlPluginBuilder {
     }
 }
 
+impl Default for SdlPluginBuilder {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[cfg(feature = "mixer")]
 impl SdlPluginBuilder {
     pub fn with_mixer_settings(mut self, mixer_settings: MixerSettings) -> Self {
