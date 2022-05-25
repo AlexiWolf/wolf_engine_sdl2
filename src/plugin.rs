@@ -142,5 +142,7 @@ mod sdl2_plugin_builder_tests {
             init_flag: mixer::InitFlag::all(),
         };
         let builder = SdlPlugin::builder().with_mixer_settings(mixer_settings);
+
+        assert_eq!(mixer_settings, builder.mixer_settings, "The mixer settings were not set correctly.");
     }
 }
