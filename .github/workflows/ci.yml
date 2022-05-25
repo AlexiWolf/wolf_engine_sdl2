@@ -69,7 +69,7 @@ jobs:
         elif [ "$RUNNER_OS" == "macOS" ]; then
           brew install sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_image
         elif [ "$RUNNER_OS" == "Windows" ]; then
-          
+          vcpkg install sdl2 sdl2-gfx sdl2-image sdl2-mixer sdl2-image
         else
           echo "$RUNNER_OS not supported."
         fi
