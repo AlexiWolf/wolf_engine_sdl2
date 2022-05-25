@@ -61,7 +61,7 @@ jobs:
         rust-version: ${{ matrix.rust-version }} 
     - name: Install Dependencies
       run: |
-        if [ "$RUNNER_OS" == "Linux" ] then
+        if [ "$RUNNER_OS" == "Linux" ]; then
           apt install libsdl2-gfx-dev libsdl2-gfx-1.0-0 libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-image-dev libsdl2-image-2.0-0
         else
           echo "$RUNNER_OS not supported."
