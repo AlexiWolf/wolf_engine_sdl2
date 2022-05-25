@@ -104,6 +104,12 @@ impl SdlPluginBuilder {
         self.window_settings = window_settings;
         self
     }
+
+    #[cfg(feature = "mixer")]
+    pub fn with_mixer_settings(mut self, mixer_settings: MixerSettings) -> Self {
+        self.mixer_settings = mixer_settings;
+        self
+    }
 }
 
 impl Default for SdlPluginBuilder {
@@ -112,13 +118,6 @@ impl Default for SdlPluginBuilder {
     }
 }
 
-#[cfg(feature = "mixer")]
-impl SdlPluginBuilder {
-    pub fn with_mixer_settings(mut self, mixer_settings: MixerSettings) -> Self {
-        self.mixer_settings = mixer_settings;
-        self
-    }
-}
 
 #[cfg(test)]
 mod sdl2_plugin_builder_tests {
