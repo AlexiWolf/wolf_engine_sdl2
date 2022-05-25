@@ -60,6 +60,7 @@ jobs:
       with:
         rust-version: ${{ matrix.rust-version }} 
     - name: Install Dependencies
+      shell: bash
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
           sudo apt install -y libsdl2-gfx-dev libsdl2-gfx-1.0-0 
