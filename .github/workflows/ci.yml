@@ -66,6 +66,8 @@ jobs:
           sudo apt install -y libsdl2-gfx-dev libsdl2-gfx-1.0-0 
           libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-image-dev 
           libsdl2-image-2.0-0 xorg xvfb
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          brew install sdl2 sdl2-gfx sdl2-image sdl2-mixer sdl2-image
         else
           echo "$RUNNER_OS not supported."
         fi
