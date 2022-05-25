@@ -78,8 +78,10 @@ mod sdl2_plugin_tests {
 
 /// Build and customize an instance of [SdlPlugin].
 pub struct SdlPluginBuilder {
+    /// The settings used to create the SDL window.
     pub window_settings: SdlWindowSettings,
 
+    /// The settings used to initialize [Mixer](sdl2::mixer).
     #[cfg(feature = "mixer")]
     pub mixer_settings: MixerSettings,
 }
