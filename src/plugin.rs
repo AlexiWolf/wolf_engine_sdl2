@@ -78,7 +78,7 @@ mod sdl2_plugin_tests {
 
 pub struct SdlPluginBuilder {
     window_settings: SdlWindowSettings,
-    
+
     #[cfg(feature = "mixer")]
     mixer_settings: MixerSettings,
 }
@@ -151,11 +151,16 @@ mod sdl2_plugin_builder_tests {
         };
         let builder = SdlPlugin::builder().with_mixer_settings(mixer_settings);
 
-        assert_eq!(mixer_settings, builder.mixer_settings, "The mixer settings were not set correctly.");
+        assert_eq!(
+            mixer_settings, builder.mixer_settings,
+            "The mixer settings were not set correctly."
+        );
 
         let plugin = builder.build();
 
-        assert_eq!(mixer_settings, plugin.mixer_settings, "The plugin was not built with the correct mixer settings.");
-
+        assert_eq!(
+            mixer_settings, plugin.mixer_settings,
+            "The plugin was not built with the correct mixer settings."
+        );
     }
 }
