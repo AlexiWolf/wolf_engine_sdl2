@@ -80,12 +80,17 @@ mod sdl2_plugin_tests {
 
 pub struct SdlPluginBuilder {
     window_settings: SdlWindowSettings,
+    
+    #[cfg(feature = "mixer")]
+    mixer_settings: MixerSettings,
 }
 
 impl SdlPluginBuilder {
     pub fn new() -> Self {
         Self {
             window_settings: Default::default(),
+            #[cfg(feature = "mixer")]
+            mixer_settings: Default::default(),
         }
     }
 
@@ -101,7 +106,8 @@ impl SdlPluginBuilder {
 
 #[cfg(feature = "mixer")]
 impl SdlPluginBuilder {
-    pub fn with_mixer_settings(self, mixer_settings: MixerSettings) -> Self {
+    pub fn with_mixer_settings(mut self, mixer_settings: MixerSettings) -> Self {
+        self.mixer_settings = mixer_settings;
         self
     }
 }
