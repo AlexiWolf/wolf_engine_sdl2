@@ -76,6 +76,7 @@ mod sdl2_plugin_tests {
     }
 }
 
+/// Build and customize an instance of [SdlPlugin].
 pub struct SdlPluginBuilder {
     window_settings: SdlWindowSettings,
 
