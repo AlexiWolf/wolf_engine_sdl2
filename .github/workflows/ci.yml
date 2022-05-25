@@ -71,4 +71,9 @@ jobs:
         fi
     - name: Run tests
       shell: bash
-      run: cargo test --verbose $OPTIONS --all-features 
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          xvfb-run cargo test --verbose $OPTIONS --all-features 
+        else
+          cargo test --verbose $OPTIONS --all-features
+        fi
