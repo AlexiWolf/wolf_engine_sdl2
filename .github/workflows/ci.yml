@@ -65,6 +65,7 @@ jobs:
           apt install libsdl2-gfx-dev libsdl2-gfx-1.0-0 libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-image-dev libsdl2-image-2.0-0
         else
           echo $RUNNER_OS not supported.
+        fi
     - name: Run tests
       shell: bash
       run: cargo test --verbose $OPTIONS --all-features 
