@@ -30,7 +30,7 @@ pub struct SdlPlugin {
 
 impl SdlPlugin {
     pub fn builder() -> SdlPluginBuilder {
-        SdlPluginBuilder::new()
+        SdlPluginBuilder::default()
     }
 }
 
@@ -85,14 +85,6 @@ pub struct SdlPluginBuilder {
 }
 
 impl SdlPluginBuilder {
-    pub fn new() -> Self {
-        Self {
-            window_settings: Default::default(),
-            #[cfg(feature = "mixer")]
-            mixer_settings: Default::default(),
-        }
-    }
-    
     /// Consumes the builder and creates an instance of [SdlPlugin] from it.
     pub fn build(self) -> SdlPlugin {
         SdlPlugin {
@@ -118,7 +110,11 @@ impl SdlPluginBuilder {
 
 impl Default for SdlPluginBuilder {
     fn default() -> Self {
-        Self::new()
+        Self {
+            window_settings: Default::default(),
+            #[cfg(feature = "mixer")]
+            mixer_settings: Default::default(),
+        }
     }
 }
 
