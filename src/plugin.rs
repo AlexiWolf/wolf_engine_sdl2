@@ -99,6 +99,13 @@ impl SdlPluginBuilder {
     }
 }
 
+#[cfg(feature = "mixer")]
+impl SdlPluginBuilder {
+    pub fn with_mixer_settings(self, mixer_settings: MixerSettings) -> Self {
+        self
+    }
+}
+
 #[cfg(test)]
 mod sdl2_plugin_builder_tests {
     use super::*;
