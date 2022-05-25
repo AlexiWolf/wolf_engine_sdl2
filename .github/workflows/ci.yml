@@ -60,7 +60,7 @@ jobs:
       with:
         rust-version: ${{ matrix.rust-version }} 
     - name: Linux Install Dependencies 
-      if: matrix.platform.os == "ubuntu-latest"
+      if: matrix.platform.os == ubuntu-latest
       run: |
         apt install libsdl2-gfx-dev libsdl2-gfx-1.0-0 libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-image-dev libsdl2-image-2.0-0
     - name: Run tests
