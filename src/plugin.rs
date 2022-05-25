@@ -96,7 +96,7 @@ impl SdlPluginBuilder {
             mixer_settings: self.mixer_settings,
         }
     }
-    
+
     /// Set custom [SdlWindowSettings].
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
         self.window_settings = window_settings;
@@ -120,7 +120,6 @@ impl Default for SdlPluginBuilder {
         }
     }
 }
-
 
 #[cfg(test)]
 mod sdl2_plugin_builder_tests {
