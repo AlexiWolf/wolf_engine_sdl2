@@ -24,11 +24,15 @@ use wolf_engine::*;
 /// ```
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
+    #[cfg(feature = "mixer")]
+    mixer_settings: MixerSettings,
 }
 
 impl SdlPlugin {
     fn new(window_settings: SdlWindowSettings) -> Self {
-        Self { window_settings }
+        Self { 
+            window_settings,
+        }
     }
 
     pub fn builder() -> SdlPluginBuilder {
