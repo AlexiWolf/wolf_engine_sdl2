@@ -53,7 +53,7 @@ impl Plugin for SdlPlugin {
         #[cfg(feature = "mixer")]
         {
             engine_builder =
-                engine_builder.with_subcontext(SdlMixerContext::new(MixerSettings::default()));
+                engine_builder.with_subcontext(SdlMixerContext::new(self.mixer_settings));
         }
         Ok(engine_builder)
     }
