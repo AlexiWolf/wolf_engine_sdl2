@@ -24,26 +24,28 @@ impl SdlMainLoop {
             }
         }
     }
+
+    fn handle_window_quit(&mut self, engine: &mut Engine) {
+        if self.has_window_quit {
+            log::debug!("The SDL window has quit.  Shutting down the engine.");
+            engine.quit();
+        }
+    }
 }
 
 impl MainLoop for SdlMainLoop {
     fn run(&mut self, mut engine: Engine) -> Engine {
         log_sdl_version();
-
         while engine.state_stack.is_not_empty() {
             profile_new_frame();
             profile_scope!("frame");
             self.process_sdl_events(&engine.context);
-            
             engine.update();
             engine.render();
-
-            if self.has_window_quit {
-                log::debug!("The SDL window has quit.  Shutting down the engine.");
-                engine.quit();
-            }
+            self.handle_window_quit(&mut engine);
         }
         engine
     }
+
 }
 
