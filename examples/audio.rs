@@ -16,6 +16,7 @@ pub fn main() {
     EngineBuilder::new()
         .with_plugin(Box::from(sdl_plugin))
         .build()
+        .unwrap()
         .run(Box::from(MainState::new()))
 }
 
@@ -31,49 +32,47 @@ impl MainState {
 
 impl State for MainState {
     fn setup(&mut self, context: &mut Context) {
-        if let Some(Ok(audio)) = context.try_borrow::<SdlAudioContext>() {
-            let desired_spec = AudioSpecDesired {
-                freq: Some(48_000),
-                channels: Some(2),
-                samples: None,
-            };
-            self.audio_device = Some(
-                audio
-                    .subsystem
-                    .open_playback(None, &desired_spec, |spec| {
-                        let wav_spec = AudioSpecWAV::load_wav(Cow::from(PathBuf::from(
-                            "examples/assets/rain.wav",
-                        )))
-                        .expect("Failed to load rain.wav");
-                        let cvt = AudioCVT::new(
-                            wav_spec.format,
-                            wav_spec.channels,
-                            wav_spec.freq,
-                            spec.format,
-                            spec.channels,
-                            spec.freq,
-                        )
-                        .expect("Could not convert wav file");
-                        let data = cvt.convert(wav_spec.buffer().to_vec());
-                        Sound {
-                            data,
-                            volume: 0.25,
-                            pos: 0,
-                        }
-                    })
-                    .expect("Failed to create audio device"),
-            );
-            self.audio_device.as_ref().unwrap().resume();
-        }
+        let audio = context.borrow::<SdlAudioContext>().unwrap();
+        let desired_spec = AudioSpecDesired {
+            freq: Some(48_000),
+            channels: Some(2),
+            samples: None,
+        };
+        self.audio_device = Some(
+            audio
+                .subsystem
+                .open_playback(None, &desired_spec, |spec| {
+                    let wav_spec = AudioSpecWAV::load_wav(Cow::from(PathBuf::from(
+                        "examples/assets/rain.wav",
+                    )))
+                    .expect("Failed to load rain.wav");
+                    let cvt = AudioCVT::new(
+                        wav_spec.format,
+                        wav_spec.channels,
+                        wav_spec.freq,
+                        spec.format,
+                        spec.channels,
+                        spec.freq,
+                    )
+                    .expect("Could not convert wav file");
+                    let data = cvt.convert(wav_spec.buffer().to_vec());
+                    Sound {
+                        data,
+                        volume: 0.25,
+                        pos: 0,
+                    }
+                })
+                .expect("Failed to create audio device"),
+        );
+        self.audio_device.as_ref().unwrap().resume();
     }
     fn update(&mut self, _context: &mut Context) -> OptionalTransition {
         None
     }
 
     fn render(&mut self, context: &mut Context) -> RenderResult {
-        if let Some(Ok(mut video)) = context.try_borrow_mut::<SdlVideoContext>() {
-            video.canvas.clear();
-        }
+        let mut video = context.borrow_mut::<SdlVideoContext>().unwrap();
+        video.canvas.clear();
     }
 }
 
