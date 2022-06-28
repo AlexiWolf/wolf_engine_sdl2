@@ -14,6 +14,7 @@ pub fn main() {
         EngineBuilder::new()
             .with_plugin(Box::from(sdl_plugin))
             .build()
+            .unwrap()
             .run(Box::from(MainState::new()));
     } else {
         error!(
