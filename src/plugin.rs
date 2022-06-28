@@ -50,7 +50,7 @@ impl Plugin for SdlPlugin {
             .with_subcontext(sdl_context)
             .with_subcontext(sdl_video_context)
             .with_subcontext(sdl_audio_context)
-            .with_main_loop(Box::from(SdlMainloop::new()));
+            .with_main_loop(Box::from(SdlMainLoop::new()));
         #[cfg(feature = "mixer")]
         {
             engine_builder =
