@@ -14,6 +14,7 @@ pub fn main() {
     EngineBuilder::new()
         .with_plugin(Box::from(sdl_plugin))
         .build()
+        .unwrap()
         .run(Box::from(ExampleGame::new()));
 }
 
@@ -34,18 +35,17 @@ impl State for ExampleGame {
     }
 
     fn render(&mut self, context: &mut Context) -> RenderResult {
-        if let Some(Ok(mut sdl)) = context.try_borrow_mut::<SdlVideoContext>() {
-            let color = Hsl::from(self.hew, 100.0, 50.0);
-            sdl.canvas.set_draw_color(SdlColor::RGB(
-                color.get_red() as u8,
-                color.get_green() as u8,
-                color.get_blue() as u8,
-            ));
-            sdl.canvas.clear();
-            sdl.canvas
-                .string(10, 10, "Hello, SDL2!", SdlColor::BLACK)
-                .unwrap();
-            sdl.canvas.present();
-        }
+        let mut sdl = context.borrow_mut::<SdlVideoContext>().unwrap();
+        let color = Hsl::from(self.hew, 100.0, 50.0);
+        sdl.canvas.set_draw_color(SdlColor::RGB(
+            color.get_red() as u8,
+            color.get_green() as u8,
+            color.get_blue() as u8,
+        ));
+        sdl.canvas.clear();
+        sdl.canvas
+            .string(10, 10, "Hello, SDL2!", SdlColor::BLACK)
+            .unwrap();
+        sdl.canvas.present();
     }
 }
