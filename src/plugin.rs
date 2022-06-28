@@ -50,7 +50,7 @@ impl Plugin for SdlPlugin {
             .with_subcontext(sdl_context)
             .with_subcontext(sdl_video_context)
             .with_subcontext(sdl_audio_context)
-            .with_engine_core(Box::from(run_with_sdl));
+            .with_main_loop(Box::from(SdlMainLoop::new()));
         #[cfg(feature = "mixer")]
         {
             engine_builder =
@@ -70,7 +70,7 @@ mod sdl2_plugin_tests {
         let sdl_plugin = SdlPlugin::default();
 
         engine_builder = engine_builder.with_plugin(Box::from(sdl_plugin));
-        let engine = engine_builder.build();
+        let engine = engine_builder.build().unwrap();
 
         assert!(engine.context.borrow::<SdlContext>().is_some());
         assert!(engine.context.borrow::<SdlVideoContext>().is_some());

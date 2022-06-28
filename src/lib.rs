@@ -4,7 +4,7 @@
 //!
 //! Add this package, and [sdl2] to your project's dependencies:
 //!
-//! ```ignore
+//! ```text
 //! wolf_engine_sdl2 = "*"
 //! sdl2 = "*"
 //! ```
@@ -27,6 +27,7 @@
 //! EngineBuilder::new()
 //!     .with_plugin(Box::from(SdlPlugin::default()))
 //!     .build()
+//!     .unwrap()
 //!     .run(Box::from(my_game));
 //! ```
 //!
@@ -36,12 +37,16 @@
 //! # use wolf_engine::*;
 //! # use wolf_engine_sdl2::*;
 //! #
-//! # let context = Context::new();
+//! # let mut engine = EngineBuilder::new()
+//! #   .with_plugin(Box::from(SdlPlugin::default()))
+//! #   .build()
+//! #   .unwrap();
 //! #
-//! if let Some(Ok(mut sdl_video)) = context.try_borrow_mut::<SdlVideoContext>() {
-//!     sdl_video.canvas.clear();
-//!     sdl_video.canvas.present();
-//! };
+//! # let context = &mut engine.context;
+//! #
+//! let mut sdl_video = context.borrow_mut::<SdlVideoContext>().unwrap();
+//! sdl_video.canvas.clear();
+//! sdl_video.canvas.present();
 //! ```
 //!
 //! For a more complete usage example, see the
@@ -49,7 +54,7 @@
 
 mod audio;
 mod context;
-mod core_function;
+mod main_loop;
 mod plugin;
 mod video;
 
@@ -58,7 +63,7 @@ mod mixer;
 
 pub use audio::*;
 pub use context::*;
-pub(crate) use core_function::*;
+pub use main_loop::*;
 pub use plugin::*;
 pub use video::*;
 

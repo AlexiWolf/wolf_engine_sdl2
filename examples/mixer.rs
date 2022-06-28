@@ -14,6 +14,7 @@ pub fn main() {
         EngineBuilder::new()
             .with_plugin(Box::from(sdl_plugin))
             .build()
+            .unwrap()
             .run(Box::from(MainState::new()));
     } else {
         error!(
@@ -46,7 +47,7 @@ impl<'a> State for MainState<'a> {
     }
 
     fn render(&mut self, context: &mut Context) -> RenderResult {
-        if let Some(Ok(mut video)) = context.try_borrow_mut::<SdlVideoContext>() {
+        if let Some(mut video) = context.borrow_mut::<SdlVideoContext>() {
             video.canvas.set_draw_color(Color::BLACK);
             video.canvas.present();
         }
