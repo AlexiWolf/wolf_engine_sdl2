@@ -12,11 +12,11 @@ homepage = "https://github.com/AlexiWolf/wolf_engine_sdl2"
 
 [dependencies]
 log = "0.4"
-wolf_engine = ">=0.17"
+wolf_engine = ">=0.20"
 sdl2 = ">=0.35"
 
 [dev-dependencies]
-wolf_engine = {version = ">=0.17", features = ["logging"]}
+wolf_engine = {version = ">=0.20", features = ["logging"]}
 sdl2 = {version = ">=0.35", features = ["gfx", "mixer"]}
 colors-transform = "0.2"
 
