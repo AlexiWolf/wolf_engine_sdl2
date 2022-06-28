@@ -27,6 +27,7 @@
 //! EngineBuilder::new()
 //!     .with_plugin(Box::from(SdlPlugin::default()))
 //!     .build()
+//!     .unwrap()
 //!     .run(Box::from(my_game));
 //! ```
 //!
@@ -38,10 +39,9 @@
 //! #
 //! # let context = Context::new();
 //! #
-//! if let Some(Ok(mut sdl_video)) = context.try_borrow_mut::<SdlVideoContext>() {
-//!     sdl_video.canvas.clear();
-//!     sdl_video.canvas.present();
-//! };
+//! let mut sdl_video = context.borrow_mut::<SdlVideoContext>().unwrap();
+//! sdl_video.canvas.clear();
+//! sdl_video.canvas.present();
 //! ```
 //!
 //! For a more complete usage example, see the
