@@ -5,6 +5,12 @@ use wolf_engine::*;
 
 pub struct SdlMainLoop;
 
+impl SdlMainLoop {
+    pub fn new() -> Self {
+        Self
+    }
+}
+
 impl MainLoop for SdlMainLoop {
     fn run(&mut self, engine: Engine) -> Engine {
         log_sdl_version();
