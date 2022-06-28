@@ -58,7 +58,7 @@ mod mixer;
 
 pub use audio::*;
 pub use context::*;
-pub(crate) use main_loop::*;
+pub use main_loop::*;
 pub use plugin::*;
 pub use video::*;
 
