@@ -51,3 +51,9 @@ impl SdlMainLoop {
         }
     }
 }
+
+impl Default for SdlMainLoop {
+    fn default() -> Self {
+        Self::new()
+    }
+}
