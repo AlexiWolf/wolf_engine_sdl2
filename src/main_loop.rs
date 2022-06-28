@@ -12,7 +12,7 @@ impl SdlMainLoop {
 }
 
 impl MainLoop for SdlMainLoop {
-    fn run(&mut self, engine: Engine) -> Engine {
+    fn run(&mut self, mut engine: Engine) -> Engine {
         log_sdl_version();
         let mut has_window_quit = false;
 
