@@ -34,13 +34,9 @@ impl MainLoop for SdlMainLoop {
             profile_new_frame();
             profile_scope!("frame");
             self.process_sdl_events(&engine.context);
-
-            engine
-                .scheduler
-                .update(&mut engine.context, &mut engine.state_stack);
-            engine
-                .scheduler
-                .render(&mut engine.context, &mut engine.state_stack);
+            
+            engine.update();
+            engine.render();
 
             if self.has_window_quit {
                 log::debug!("The SDL window has quit.  Shutting down the engine.");
