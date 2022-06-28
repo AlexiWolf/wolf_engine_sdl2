@@ -37,7 +37,12 @@
 //! # use wolf_engine::*;
 //! # use wolf_engine_sdl2::*;
 //! #
-//! # let context = Context::new();
+//! # let mut engine = EngineBuilder::new()
+//! #   .with_plugin(Box::from(SdlPlugin::default()))
+//! #   .build()
+//! #   .unwrap();
+//! #
+//! # let context = &mut engine.context;
 //! #
 //! let mut sdl_video = context.borrow_mut::<SdlVideoContext>().unwrap();
 //! sdl_video.canvas.clear();
