@@ -40,7 +40,7 @@ impl MainLoop for SdlMainLoop {
                 .render(&mut engine.context, &mut engine.state_stack);
             if self.has_window_quit {
                 log::debug!("The SDL window has quit.  Shutting down the engine.");
-                engine.state_stack.clear(&mut engine.context);
+                engine.quit();
             }
         }
         engine
