@@ -4,7 +4,7 @@
 //!
 //! Add this package, and [sdl2] to your project's dependencies:
 //!
-//! ```ignore
+//! ```text
 //! wolf_engine_sdl2 = "*"
 //! sdl2 = "*"
 //! ```
