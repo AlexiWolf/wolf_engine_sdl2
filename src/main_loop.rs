@@ -20,10 +20,10 @@ pub(crate) fn run_with_sdl(mut engine: Engine) {
         }
         engine
             .scheduler
-            .profile_update(&mut engine.context, &mut engine.state_stack);
+            .update(&mut engine.context, &mut engine.state_stack);
         engine
             .scheduler
-            .profile_render(&mut engine.context, &mut engine.state_stack);
+            .render(&mut engine.context, &mut engine.state_stack);
         if has_window_quit {
             log::debug!("The SDL window has quit.  Shutting down the engine.");
             engine.state_stack.clear(&mut engine.context);
