@@ -25,6 +25,11 @@ impl SdlMainLoop {
         }
     }
 
+    fn run_frame(&self, engine: &mut Engine) {
+        engine.update();
+        engine.render();
+    }
+
     fn handle_window_quit(&mut self, engine: &mut Engine) {
         if self.has_window_quit {
             log::debug!("The SDL window has quit.  Shutting down the engine.");
@@ -40,12 +45,10 @@ impl MainLoop for SdlMainLoop {
             profile_new_frame();
             profile_scope!("frame");
             self.process_sdl_events(&engine.context);
-            engine.update();
-            engine.render();
+            self.run_frame(&mut engine);
             self.handle_window_quit(&mut engine);
         }
         engine
     }
-
 }
 
