@@ -49,7 +49,7 @@
 
 mod audio;
 mod context;
-mod core_function;
+mod main_loop;
 mod plugin;
 mod video;
 
@@ -58,7 +58,7 @@ mod mixer;
 
 pub use audio::*;
 pub use context::*;
-pub(crate) use core_function::*;
+pub(crate) use main_loop::*;
 pub use plugin::*;
 pub use video::*;
 
