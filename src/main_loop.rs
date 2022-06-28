@@ -3,9 +3,9 @@ use sdl2::event::Event;
 use wolf_engine::utils::*;
 use wolf_engine::*;
 
-pub struct Sdl2MainLoop;
+pub struct SdlMainLoop;
 
-impl MainLoop for Sdl2MainLoop {
+impl MainLoop for SdlMainLoop {
     fn run(&mut self, engine: Engine) -> Engine {
         log_sdl_version();
         let mut has_window_quit = false;
