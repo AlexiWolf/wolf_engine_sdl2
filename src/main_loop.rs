@@ -11,7 +11,7 @@ impl MainLoop for SdlMainLoop {
     fn run(&mut self, mut engine: Engine) -> Engine {
         log_sdl_version();
         while engine.state_stack.is_not_empty() {
-            profile_new_frame();
+            profile_new_frame!();
             profile_scope!("frame");
             self.process_sdl_events(&engine.context);
             self.run_frame(&mut engine);
