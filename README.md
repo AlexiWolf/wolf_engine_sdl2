@@ -8,7 +8,7 @@ This plugin uses the [Rust SDL2](https://github.com/Rust-SDL2/rust-sdl2) binding
 
 ### Requirements
 
-- [Wolf Engine](https://github.com/AlexiWolf/wolf_engine) v0.20 or greater.
+- [Wolf Engine](https://github.com/AlexiWolf/wolf_engine) v0.21 or greater.
 - SDL2 libraries are required to be installed.  See 
 [Rust-SDL2's Requirements Section](https://github.com/Rust-SDL2/rust-sdl2#requirements) for details.
 
