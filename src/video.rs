@@ -25,6 +25,12 @@ pub enum SdlVideoMode {
     Software,
 }
 
+impl Default for SdlVideoMode {
+    fn default() -> Self {
+        Self::Accelerated
+    }
+}
+
 impl SdlVideoContext {
     pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
         let subsystem = sdl.video().expect("Failed to crate the video subsystem");
