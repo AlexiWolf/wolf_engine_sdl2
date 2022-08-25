@@ -19,6 +19,12 @@ pub struct SdlVideoContext {
     pub canvas: WindowCanvas,
 }
 
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+pub enum SdlVideoMode {
+    Accelerated,
+    Software,
+}
+
 impl SdlVideoContext {
     pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
         let subsystem = sdl.video().expect("Failed to crate the video subsystem");
@@ -31,7 +37,7 @@ impl SdlVideoContext {
             .position_centered()
             .build()
             .expect("Failed to create the window");
-        let mut canvas = window
+        let mut canvas_builder = window
             .into_canvas()
             .present_vsync()
             .build()
