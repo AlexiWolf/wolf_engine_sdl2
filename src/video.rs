@@ -8,7 +8,11 @@ use wolf_engine::*;
 /// ```
 /// # use wolf_engine_sdl2::*;
 /// # let sdl = sdl2::init().expect("Failed to initialize SDL");
-/// # let sdl_video_context = SdlVideoContext::new(&sdl, SdlWindowSettings::default());
+/// # let sdl_video_context = SdlVideoContext::new(
+/// #   &sdl,
+/// #   SdlWindowSettings::default(),
+/// #   SdlVideoMode::Software
+/// # );
 /// sdl_video_context.subsystem;
 /// sdl_video_context.canvas;
 /// ```
