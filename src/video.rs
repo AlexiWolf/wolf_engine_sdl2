@@ -32,7 +32,7 @@ impl Default for SdlVideoMode {
 }
 
 impl SdlVideoContext {
-    pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings) -> Self {
+    pub fn new(sdl: &Sdl, window_settings: SdlWindowSettings, video_mode: SdlVideoMode) -> Self {
         let subsystem = sdl.video().expect("Failed to crate the video subsystem");
         let window = subsystem
             .window(
@@ -45,7 +45,14 @@ impl SdlVideoContext {
             .expect("Failed to create the window");
         let mut canvas_builder = window
             .into_canvas()
-            .present_vsync()
+            .present_vsync();
+        
+        match video_mode {
+            SdlVideoMode::Accelerated => { canvas_builder = canvas_builder.accelerated() }, 
+            SdlVideoMode::Software => { canvas_builder = canvas_builder.software() }, 
+        }
+
+        let mut canvas = canvas_builder
             .build()
             .expect("Failed to create the window canvas");
         canvas.set_draw_color(Color::BLACK);
