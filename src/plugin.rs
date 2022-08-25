@@ -24,6 +24,7 @@ use wolf_engine::*;
 /// ```
 pub struct SdlPlugin {
     window_settings: SdlWindowSettings,
+    video_mode: SdlVideoMode,
     #[cfg(feature = "mixer")]
     mixer_settings: MixerSettings,
 }
@@ -82,6 +83,7 @@ mod sdl2_plugin_tests {
 pub struct SdlPluginBuilder {
     /// The settings used to create the SDL window.
     pub window_settings: SdlWindowSettings,
+    pub video_mode: SdlVideoMode,
 
     /// The settings used to initialize [Mixer](sdl2::mixer).
     #[cfg(feature = "mixer")]
@@ -93,6 +95,7 @@ impl SdlPluginBuilder {
     pub fn build(self) -> SdlPlugin {
         SdlPlugin {
             window_settings: self.window_settings,
+            video_mode: self.video_mode,
             #[cfg(feature = "mixer")]
             mixer_settings: self.mixer_settings,
         }
@@ -101,6 +104,11 @@ impl SdlPluginBuilder {
     /// Set custom [SdlWindowSettings].
     pub fn with_window_settings(mut self, window_settings: SdlWindowSettings) -> Self {
         self.window_settings = window_settings;
+        self
+    }
+
+    pub fn with_video_mode(mut self, video_mode: SdlVideoMode) -> Self {
+        self.video_mode = video_mode;
         self
     }
 
