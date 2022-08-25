@@ -45,7 +45,11 @@ impl Default for SdlPlugin {
 impl Plugin for SdlPlugin {
     fn setup(&mut self, mut engine_builder: EngineBuilder) -> PluginResult {
         let sdl_context = SdlContext::new();
-        let sdl_video_context = SdlVideoContext::new(&sdl_context.sdl, self.window_settings);
+        let sdl_video_context = SdlVideoContext::new(
+            &sdl_context.sdl,
+            self.window_settings,
+            self.video_mode
+        );
         let sdl_audio_context = SdlAudioContext::new(&sdl_context.sdl);
         engine_builder = engine_builder
             .with_subcontext(sdl_context)
