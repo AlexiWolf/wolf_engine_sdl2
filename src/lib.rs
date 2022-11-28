@@ -59,6 +59,11 @@ impl SdlContext {
         }
     }
 
+    pub fn window(&self, title: &'static str, width: u32, height: u32) 
+        -> sdl2::video::WindowBuilder {
+        self.video.window(title, width, height)
+    }
+
     pub fn handle_events(&mut self) {
         for event in self.sdl_event_pump.poll_iter() {
             match event {
