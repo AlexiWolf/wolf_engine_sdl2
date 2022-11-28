@@ -14,11 +14,16 @@ pub fn init() -> Result<SdlContext, String> {
 
 pub struct SdlContext {
     wolf_event_queue: WolfEventQueue<WolfEvent>, 
+    sdl_event_pump: sdl2::EventPump,
+    sdl: sdl2::Sdl,
 }
 
 impl SdlContext {
-    pub fn new() -> Self {
-        Self { wolf_event_queue: WolfEventQueue::new() }
+    pub fn new(sdl: sdl2::Sdl) -> Self {
+        let wolf_event_queue = WolfEventQueue::new();
+        let sdl_event_pump = sdl.event_pump()
+            .expect("Failed to initialize SDL2's event pump");
+        Self { wolf_event_queue, sdl_event_pump, sdl }
     }
 
     pub fn handle_events(&mut self) {}
