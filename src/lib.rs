@@ -2,10 +2,14 @@ use wolf_engine::events::Event as WolfEvent;
 use wolf_engine::events::EventLoop as WolfEventLoop;
 
 pub fn init() -> Result<SdlContext, String> {
-    Err("Not implemented".to_string())
+    let sdl_context = SdlContext::new();
 }
 
 pub struct SdlContext {
+    
+}
+
+impl SdlContext {
 
 }
 
