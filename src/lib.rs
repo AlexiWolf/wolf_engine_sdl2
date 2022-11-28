@@ -3,7 +3,7 @@ use wolf_engine::events::EventLoop as WolfEventLoop;
 
 pub fn init() -> Result<SdlContext, String> {
     let sdl_context = SdlContext::new();
-
+    Ok(sdl_context) 
 }
 
 pub struct SdlContext {
