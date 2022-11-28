@@ -3,8 +3,13 @@ use wolf_engine::events::EventLoop as WolfEventLoop;
 use wolf_engine::events::EventQueue as WolfEventQueue;
 
 pub fn init() -> Result<SdlContext, String> {
-    let sdl_context = SdlContext::new();
-    Ok(sdl_context) 
+    let sdl_result = sdl2::init();
+    if let Ok(sdl) = sdl_result {
+        let sdl_context = SdlContext::new(sdl);
+        Ok(sdl_context) 
+    } else {
+        Err(sdl_result.err().unwrap())
+    }
 }
 
 pub struct SdlContext {
