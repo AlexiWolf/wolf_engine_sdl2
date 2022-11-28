@@ -6,6 +6,7 @@ pub fn main() {
     let mut engine = Engine::from(sdl2); 
 
     while let Some(event) = engine.next_event() {
+        engine.context_mut().handle_events();
         match event {
             Event::Quit => println!("Goodbye!"),
             Event::Update => (), 
