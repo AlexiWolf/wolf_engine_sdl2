@@ -15,6 +15,8 @@ impl SdlContext {
     pub fn new() -> Self {
         Self { wolf_event_queue: WolfEventQueue::new() }
     }
+
+    pub fn handle_events(&mut self) {}
 }
 
 impl WolfEventLoop<WolfEvent> for SdlContext {
